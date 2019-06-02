@@ -1,0 +1,188 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{BB8368FA-BE14-4A3A-8FAD-BDA6CBDB8C64}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		NuGet.config = NuGet.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{76EB23E0-57D2-452E-BDB3-CE26B9E7234A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSSDK", "MSSDK", "{F630EF68-B9D0-4993-B47E-25374CF51C0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SCSDK", "SCSDK", "{F9BBFC7C-C4FA-4151-8A3E-CB2B6655A5B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gulp", "Gulp", "{751C49B8-4129-4BFA-9834-7E1B7119368B}"
+	ProjectSection(SolutionItems) = preProject
+		gulpfile.js = gulpfile.js
+		scripts\habitat.js = scripts\habitat.js
+		package.json = package.json
+		scripts\unicorn.js = scripts\unicorn.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}"
+	ProjectSection(SolutionItems) = preProject
+		gulp-config.js.template = gulp-config.js.template
+		publishsettings.targets.template = publishsettings.targets.template
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.SCSDK", "src\Foundation\SCSDK\code\SitecoreCognitiveServices.Foundation.SCSDK.csproj", "{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.SCSDK.Tests", "src\Foundation\SCSDK\tests\SitecoreCognitiveServices.Foundation.SCSDK.Tests.csproj", "{C0B780DF-9D25-4EDF-89BE-76177B6BF498}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.MSSDK", "src\Foundation\MSSDK\code\SitecoreCognitiveServices.Foundation.MSSDK.csproj", "{13ECB0DB-E99D-4D05-97E8-138EB3884353}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Properties", "Properties", "{36A40F78-1E26-4067-89AA-81962EF1BE63}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\nant\properties\default.properties = scripts\nant\properties\default.properties
+		scripts\nant\global.properties = scripts\nant\global.properties
+		scripts\nant\properties\local.properties = scripts\nant\properties\local.properties
+		scripts\nant\properties\local.properties.example = scripts\nant\properties\local.properties.example
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IBMSDK", "IBMSDK", "{91665DC0-B470-488C-9047-A89614668F85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.IBMSDK", "src\Foundation\IBMSDK\code\SitecoreCognitiveServices.Foundation.IBMSDK.csproj", "{369FD581-2F6F-47F0-80F3-25F8209FFDD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SCSDK", "SCSDK", "{7793F3F0-1D38-495B-8E47-2F1F94C37D3F}"
+	ProjectSection(SolutionItems) = preProject
+		src\Foundation\SCSDK\code\Properties\PublishProfiles\deploy.pubxml.template = src\Foundation\SCSDK\code\Properties\PublishProfiles\deploy.pubxml.template
+		src\Foundation\SCSDK\code\serialization\System-Settings\Sitecore Cognitive Services\APIs\IBMSDK.yml.template = src\Foundation\SCSDK\code\serialization\System-Settings\Sitecore Cognitive Services\APIs\IBMSDK.yml.template
+		src\Foundation\SCSDK\code\serialization\System-Settings\Sitecore Cognitive Services\APIs\LexSDK.yml.template = src\Foundation\SCSDK\code\serialization\System-Settings\Sitecore Cognitive Services\APIs\LexSDK.yml.template
+		src\Foundation\SCSDK\code\serialization\System-Settings\Sitecore Cognitive Services\APIs\MSSDK.yml.template = src\Foundation\SCSDK\code\serialization\System-Settings\Sitecore Cognitive Services\APIs\MSSDK.yml.template
+		src\Foundation\SCSDK\code\serialization\System-Settings\Sitecore Cognitive Services\APIs\NexSDK.yml.template = src\Foundation\SCSDK\code\serialization\System-Settings\Sitecore Cognitive Services\APIs\NexSDK.yml.template
+		src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config.template = src\Foundation\SCSDK\code\App_Config\Include\SitecoreCognitiveServices\UnicornSerializationRoot.config.template
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSSDK", "MSSDK", "{DB096D2B-721A-46BB-A281-A8980F46C071}"
+	ProjectSection(SolutionItems) = preProject
+		src\Foundation\MSSDK\code\Properties\PublishProfiles\deploy.pubxml.template = src\Foundation\MSSDK\code\Properties\PublishProfiles\deploy.pubxml.template
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IBMSDK", "IBMSDK", "{611332BA-887F-4B6E-BD58-6A3039BDC98E}"
+	ProjectSection(SolutionItems) = preProject
+		src\Foundation\IBMSDK\tests\App.config.template = src\Foundation\IBMSDK\tests\App.config.template
+		src\Foundation\IBMSDK\code\Properties\PublishProfiles\deploy.pubxml.template = src\Foundation\IBMSDK\code\Properties\PublishProfiles\deploy.pubxml.template
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.IBMSDK.Tests", "src\Foundation\IBMSDK\tests\SitecoreCognitiveServices.Foundation.IBMSDK.Tests.csproj", "{2718C434-55A2-48D3-B2DE-75427AA00BB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.MSSDK.Tests", "src\Foundation\MSSDK\tests\SitecoreCognitiveServices.Foundation.MSSDK.Tests.csproj", "{19F8D38B-2DDB-4875-8116-6F6FB95D7BB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NexSDK", "NexSDK", "{FED3EFDB-466C-4A76-B80C-BDCB08950966}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LexSDK", "LexSDK", "{F83A81F7-55B2-4C99-ABBA-7A81DBAFB8AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.NexSDK", "src\Foundation\NexSDK\code\SitecoreCognitiveServices.Foundation.NexSDK.csproj", "{F915FEC6-27F6-4480-B980-6560E73C7DB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.LexSDK", "src\Foundation\LexSDK\code\SitecoreCognitiveServices.Foundation.LexSDK.csproj", "{4198ED44-8E95-4B5A-8576-EBED8F97EAB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.LexSDK.Tests", "src\Foundation\LexSDK\tests\SitecoreCognitiveServices.Foundation.LexSDK.Tests.csproj", "{0243EE5D-9D9C-4C39-8050-D65771626F7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TRSDK", "TRSDK", "{E612F058-BF5E-4844-8350-1F9F7489F013}"
+	ProjectSection(SolutionItems) = preProject
+		Sample Python to Connect.txt = Sample Python to Connect.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.NexSDK.Tests", "src\Foundation\NexSDK\tests\SitecoreCognitiveServices.Foundation.NexSDK.Tests.csproj", "{F6C91696-A115-415B-8EC7-D64B7BB954EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BigMLSDK", "BigMLSDK", "{C5C40C9F-7BF4-4887-A1E1-435244B84088}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.BigMLSDK", "src\Foundation\BigMLSDK\code\SitecoreCognitiveServices.Foundation.BigMLSDK.csproj", "{F52CD79E-3DE1-4A68-8F0D-57FA7918B4D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitecoreCognitiveServices.Foundation.BigMLSDK.Tests", "src\Foundation\BigMLSDK\tests\SitecoreCognitiveServices.Foundation.BigMLSDK.Tests.csproj", "{28817D78-6409-4DDA-BA72-F51A42341488}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0B780DF-9D25-4EDF-89BE-76177B6BF498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0B780DF-9D25-4EDF-89BE-76177B6BF498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0B780DF-9D25-4EDF-89BE-76177B6BF498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0B780DF-9D25-4EDF-89BE-76177B6BF498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13ECB0DB-E99D-4D05-97E8-138EB3884353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13ECB0DB-E99D-4D05-97E8-138EB3884353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13ECB0DB-E99D-4D05-97E8-138EB3884353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13ECB0DB-E99D-4D05-97E8-138EB3884353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369FD581-2F6F-47F0-80F3-25F8209FFDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369FD581-2F6F-47F0-80F3-25F8209FFDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369FD581-2F6F-47F0-80F3-25F8209FFDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369FD581-2F6F-47F0-80F3-25F8209FFDD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2718C434-55A2-48D3-B2DE-75427AA00BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2718C434-55A2-48D3-B2DE-75427AA00BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2718C434-55A2-48D3-B2DE-75427AA00BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2718C434-55A2-48D3-B2DE-75427AA00BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F8D38B-2DDB-4875-8116-6F6FB95D7BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F8D38B-2DDB-4875-8116-6F6FB95D7BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F8D38B-2DDB-4875-8116-6F6FB95D7BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F8D38B-2DDB-4875-8116-6F6FB95D7BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F915FEC6-27F6-4480-B980-6560E73C7DB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F915FEC6-27F6-4480-B980-6560E73C7DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F915FEC6-27F6-4480-B980-6560E73C7DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F915FEC6-27F6-4480-B980-6560E73C7DB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4198ED44-8E95-4B5A-8576-EBED8F97EAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4198ED44-8E95-4B5A-8576-EBED8F97EAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4198ED44-8E95-4B5A-8576-EBED8F97EAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4198ED44-8E95-4B5A-8576-EBED8F97EAB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0243EE5D-9D9C-4C39-8050-D65771626F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0243EE5D-9D9C-4C39-8050-D65771626F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0243EE5D-9D9C-4C39-8050-D65771626F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0243EE5D-9D9C-4C39-8050-D65771626F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6C91696-A115-415B-8EC7-D64B7BB954EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C91696-A115-415B-8EC7-D64B7BB954EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6C91696-A115-415B-8EC7-D64B7BB954EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6C91696-A115-415B-8EC7-D64B7BB954EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F52CD79E-3DE1-4A68-8F0D-57FA7918B4D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F52CD79E-3DE1-4A68-8F0D-57FA7918B4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F52CD79E-3DE1-4A68-8F0D-57FA7918B4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F52CD79E-3DE1-4A68-8F0D-57FA7918B4D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28817D78-6409-4DDA-BA72-F51A42341488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28817D78-6409-4DDA-BA72-F51A42341488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28817D78-6409-4DDA-BA72-F51A42341488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28817D78-6409-4DDA-BA72-F51A42341488}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F630EF68-B9D0-4993-B47E-25374CF51C0A} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{F9BBFC7C-C4FA-4151-8A3E-CB2B6655A5B4} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{751C49B8-4129-4BFA-9834-7E1B7119368B} = {BB8368FA-BE14-4A3A-8FAD-BDA6CBDB8C64}
+		{4784AB7A-0B87-436A-8E96-D4D63BB9C0E2} = {BB8368FA-BE14-4A3A-8FAD-BDA6CBDB8C64}
+		{FDC8D88E-569D-45DF-B1D9-0F0A75B640CC} = {F9BBFC7C-C4FA-4151-8A3E-CB2B6655A5B4}
+		{C0B780DF-9D25-4EDF-89BE-76177B6BF498} = {F9BBFC7C-C4FA-4151-8A3E-CB2B6655A5B4}
+		{13ECB0DB-E99D-4D05-97E8-138EB3884353} = {F630EF68-B9D0-4993-B47E-25374CF51C0A}
+		{36A40F78-1E26-4067-89AA-81962EF1BE63} = {BB8368FA-BE14-4A3A-8FAD-BDA6CBDB8C64}
+		{91665DC0-B470-488C-9047-A89614668F85} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{369FD581-2F6F-47F0-80F3-25F8209FFDD0} = {91665DC0-B470-488C-9047-A89614668F85}
+		{7793F3F0-1D38-495B-8E47-2F1F94C37D3F} = {4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}
+		{DB096D2B-721A-46BB-A281-A8980F46C071} = {4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}
+		{611332BA-887F-4B6E-BD58-6A3039BDC98E} = {4784AB7A-0B87-436A-8E96-D4D63BB9C0E2}
+		{2718C434-55A2-48D3-B2DE-75427AA00BB5} = {91665DC0-B470-488C-9047-A89614668F85}
+		{19F8D38B-2DDB-4875-8116-6F6FB95D7BB9} = {F630EF68-B9D0-4993-B47E-25374CF51C0A}
+		{FED3EFDB-466C-4A76-B80C-BDCB08950966} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{F83A81F7-55B2-4C99-ABBA-7A81DBAFB8AF} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{F915FEC6-27F6-4480-B980-6560E73C7DB5} = {FED3EFDB-466C-4A76-B80C-BDCB08950966}
+		{4198ED44-8E95-4B5A-8576-EBED8F97EAB3} = {F83A81F7-55B2-4C99-ABBA-7A81DBAFB8AF}
+		{0243EE5D-9D9C-4C39-8050-D65771626F7E} = {F83A81F7-55B2-4C99-ABBA-7A81DBAFB8AF}
+		{E612F058-BF5E-4844-8350-1F9F7489F013} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{F6C91696-A115-415B-8EC7-D64B7BB954EC} = {FED3EFDB-466C-4A76-B80C-BDCB08950966}
+		{C5C40C9F-7BF4-4887-A1E1-435244B84088} = {76EB23E0-57D2-452E-BDB3-CE26B9E7234A}
+		{F52CD79E-3DE1-4A68-8F0D-57FA7918B4D7} = {C5C40C9F-7BF4-4887-A1E1-435244B84088}
+		{28817D78-6409-4DDA-BA72-F51A42341488} = {C5C40C9F-7BF4-4887-A1E1-435244B84088}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
+		SolutionGuid = {4A78DFE2-98F5-44B4-B405-3993A6D3CFC3}
+	EndGlobalSection
+EndGlobal
