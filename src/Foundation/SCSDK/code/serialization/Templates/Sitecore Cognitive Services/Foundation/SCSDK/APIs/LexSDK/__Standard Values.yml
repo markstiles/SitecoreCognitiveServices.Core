@@ -1,0 +1,39 @@
+﻿---
+ID: "487f9806-7584-46ec-83a0-35e0ad3509ce"
+Parent: "135811fb-0956-4143-bb99-ecb85c7458ed"
+Template: "135811fb-0956-4143-bb99-ecb85c7458ed"
+Path: /sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/LexSDK/__Standard Values
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "01ccde80-2bf8-4bb7-83f5-50f5179639a8"
+      Hint: Auth Host
+      Value: "https://semantria.com/auth"
+    - ID: "113b9c07-668c-412e-bb3b-5fc8237a10ec"
+      Hint: API Version
+      Value: 4.2.3
+    - ID: "11f5a639-489c-4a56-bf8e-9362fc1ae4f5"
+      Hint: Wrapper Name
+      Value: dotNet
+    - ID: "2161144f-0f0b-400f-90bd-f1d2cf72277e"
+      Hint: App Name
+      Value: SitecoreCognitiveServices
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180821T160003Z
+    - ID: "552e49d3-25d9-4757-881a-895d64157fcc"
+      Hint: Auth App Key
+      Value: "cd954253-acaf-4dfa-a417-0a8cfb701f12"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "b5dcc29c-11c2-4328-97a9-b94669556f0c"
+      Hint: Host
+      Value: "https://api.semantria.com"
+    - ID: "fad65ec2-f99d-43f3-827f-982f1f8fa2ee"
+      Hint: Format
+      Value: json

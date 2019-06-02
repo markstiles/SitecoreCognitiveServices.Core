@@ -1,0 +1,20 @@
+﻿---
+ID: "12610706-326d-4fc3-b700-e7efdc74522e"
+Parent: "a5b69884-d96c-4394-bb4d-0d1711e0b0e8"
+Template: "005326d1-df5d-4e59-8e4c-cb1180c7c31d"
+Path: /sitecore/system/Modules/Sitecore Cognitive Services/APIs/NexSDK
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20181108T152654Z
+    - ID: "45443d15-b844-4bd3-8388-c642651383a0"
+      Hint: Client Version
+      Value: "Nexosis-DotNet-API-Client/1.0"
+    - ID: "c58e7b79-733a-426f-9c8d-241954e04b55"
+      Hint: Endpoint
+      Value: "https://ml.nexosis.com/v1/"

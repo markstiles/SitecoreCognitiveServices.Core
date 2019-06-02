@@ -1,0 +1,26 @@
+﻿---
+ID: "8bca2200-8f29-434f-937e-3ecbc2351737"
+Parent: "a5b69884-d96c-4394-bb4d-0d1711e0b0e8"
+Template: "135811fb-0956-4143-bb99-ecb85c7458ed"
+Path: /sitecore/system/Modules/Sitecore Cognitive Services/APIs/LexSDK
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180821T160138Z
+    - ID: "2b2fb3a2-59f3-48dd-bbe6-51dd3cec75b7"
+      Hint: Password
+      Value: "${CognitiveService.ApiKey.LexSDK.Password}"
+    - ID: "6ac22073-ae05-4cee-b432-6114110f8de6"
+      Hint: Consumer Key
+      Value: "${CognitiveService.ApiKey.LexSDK.ConsumerKey}"
+    - ID: "b53218f8-a412-475b-bb35-65a33641f860"
+      Hint: Consumer Secret
+      Value: "${CognitiveService.ApiKey.LexSDK.ConsumerSecret}"
+    - ID: "dfbac6c4-3bb4-4819-8eee-11443e424988"
+      Hint: Username
+      Value: "${CognitiveService.ApiKey.LexSDK.Username}"

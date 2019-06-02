@@ -1,0 +1,21 @@
+﻿---
+ID: "97e8edd4-4fb4-4154-95d7-5d21a006598e"
+Parent: "3d300e1d-fa56-4b22-be28-ecbf9b1d6dce"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/IBMSDK/Knowledge Studio/Knowledge Studio Endpoint
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180622T195254Z

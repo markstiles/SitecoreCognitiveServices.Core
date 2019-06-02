@@ -1,0 +1,14 @@
+﻿---
+ID: "125c5f2f-574e-4665-b4db-456a6f48b9e6"
+Parent: "44dc93d7-7d6f-425e-b110-018225bb39bb"
+Template: "7ee0975b-0698-493e-b3a2-0b2ef33d0522"
+Path: /sitecore/layout/Renderings/Sitecore Cognitive Services/Project
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190517T200813Z

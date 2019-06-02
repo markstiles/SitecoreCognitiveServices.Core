@@ -1,0 +1,26 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+    <metadata>
+        <id>SitecoreCognitiveServices.Core.BinariesOnly</id>
+        <version>${CognitiveService.Nuspec.Version}</version>
+        <description>Sitecore Connector to Machine Learning APIs</description>
+        <authors>${CognitiveService.Nuspec.Author}</authors>
+        <owners>${CognitiveService.Nuspec.Author}</owners>
+        <licenseUrl>${CognitiveService.Nuspec.LicenseUrl}</licenseUrl>
+        <projectUrl>${CognitiveService.Nuspec.ProjectUrl}</projectUrl>
+        <requireLicenseAcceptance>${CognitiveService.Nuspec.RequireLicenseAcceptance}</requireLicenseAcceptance>
+        <copyright>${CognitiveService.Nuspec.Copyright}</copyright>
+    </metadata>
+    <files>
+        <file src="bin/SitecoreCognitiveServices.Foundation.IBMSDK.dll" 
+              target="lib/Net46/SitecoreCognitiveServices.Foundation.IBMSDK.dll" />
+        <file src="bin/SitecoreCognitiveServices.Foundation.LexSDK.dll"
+              target="lib/Net46/SitecoreCognitiveServices.Foundation.LexSDK.dll" />
+        <file src="bin/SitecoreCognitiveServices.Foundation.MSSDK.dll"
+              target="lib/Net46/SitecoreCognitiveServices.Foundation.MSSDK.dll" />
+        <file src="bin/SitecoreCognitiveServices.Foundation.NexSDK.dll"
+              target="lib/Net46/SitecoreCognitiveServices.Foundation.NexSDK.dll" />
+        <file src="bin/SitecoreCognitiveServices.Foundation.SCSDK.dll" 
+              target="lib/Net46/SitecoreCognitiveServices.Foundation.SCSDK.dll" />
+    </files>
+</package>

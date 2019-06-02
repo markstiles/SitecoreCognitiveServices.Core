@@ -1,0 +1,21 @@
+﻿---
+ID: "8c2861e6-41ad-4eea-9e89-33a6b2eb2aa3"
+Parent: "9398bbf8-a3c2-4522-a587-c096e679169f"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/IBMSDK/Personality Insights/Personality Insights Endpoint
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180622T184415Z

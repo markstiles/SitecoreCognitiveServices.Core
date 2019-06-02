@@ -1,0 +1,192 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\..\..\..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\..\..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4198ED44-8E95-4B5A-8576-EBED8F97EAB3}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SitecoreCognitiveServices.Foundation.LexSDK</RootNamespace>
+    <AssemblyName>SitecoreCognitiveServices.Foundation.LexSDK</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\deploy.pubxml" />
+    <None Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\IAccountRepository.cs" />
+    <Compile Include="Account\AccountRepository.cs" />
+    <Compile Include="Account\Models\BasicSettings.cs" />
+    <Compile Include="Account\Models\BillingSettings.cs" />
+    <Compile Include="Account\Models\DetailedMode.cs" />
+    <Compile Include="Account\Models\DiscoveryMode.cs" />
+    <Compile Include="Account\Models\FeatureSettings.cs" />
+    <Compile Include="Account\Models\ServiceStatus.cs" />
+    <Compile Include="Account\Models\Statistics.cs" />
+    <Compile Include="Account\Models\Subscription.cs" />
+    <Compile Include="Account\Models\SubscriptionCollection.cs" />
+    <Compile Include="Account\Models\SubscriptionDocument.cs" />
+    <Compile Include="Account\Models\SubscriptionTemplate.cs" />
+    <Compile Include="Account\Models\SupportedFeatures.cs" />
+    <Compile Include="Account\Models\SupportedFeatureSettings.cs" />
+    <Compile Include="Blacklist\IBlacklistRepository.cs" />
+    <Compile Include="Blacklist\BlacklistRepository.cs" />
+    <Compile Include="Blacklist\Models\BlacklistItem.cs" />
+    <Compile Include="Category\ICategoryRepository.cs" />
+    <Compile Include="Category\CategoryRepository.cs" />
+    <Compile Include="Category\Models\CategoryItem.cs" />
+    <Compile Include="Collection\ICollectionRepository.cs" />
+    <Compile Include="Collection\CollectionRepository.cs" />
+    <Compile Include="Collection\Models\CollectionAttribute.cs" />
+    <Compile Include="Collection\Models\CollectionEntity.cs" />
+    <Compile Include="Collection\Models\CollectionFacet.cs" />
+    <Compile Include="Collection\Models\CollectionLocation.cs" />
+    <Compile Include="Collection\Models\CollectionMention.cs" />
+    <Compile Include="Collection\Models\CollectionAnalysis.cs" />
+    <Compile Include="Collection\Models\CollectionRequest.cs" />
+    <Compile Include="Collection\Models\CollectionTheme.cs" />
+    <Compile Include="Collection\Models\CollectionTopic.cs" />
+    <Compile Include="Configuration\IConfigurationRepository.cs" />
+    <Compile Include="Configuration\ConfigurationRepository.cs" />
+    <Compile Include="Configuration\Models\ConfigurationCloneRequest.cs" />
+    <Compile Include="Configuration\Models\ConfigurationDefinition.cs" />
+    <Compile Include="Configuration\Models\ConfigurationCollection.cs" />
+    <Compile Include="Configuration\Models\ConfigurationDocument.cs" />
+    <Compile Include="Document\IDocumentRepository.cs" />
+    <Compile Include="Document\DocumentRepository.cs" />
+    <Compile Include="Document\Models\AutoCategories.cs" />
+    <Compile Include="Document\Models\Category.cs" />
+    <Compile Include="Document\Models\Detail.cs" />
+    <Compile Include="Document\Models\DocumentAnalysis.cs" />
+    <Compile Include="Document\Models\DocumentRequest.cs" />
+    <Compile Include="Document\Models\Entity.cs" />
+    <Compile Include="Document\Models\Location.cs" />
+    <Compile Include="Document\Models\Mention.cs" />
+    <Compile Include="Document\Models\Metadata.cs" />
+    <Compile Include="Document\Models\ModelSentiment.cs" />
+    <Compile Include="Document\Models\Opinion.cs" />
+    <Compile Include="Document\Models\Phrase.cs" />
+    <Compile Include="Document\Models\Relation.cs" />
+    <Compile Include="Document\Models\Theme.cs" />
+    <Compile Include="Document\Models\Topic.cs" />
+    <Compile Include="Document\Models\Word.cs" />
+    <Compile Include="Entity\IEntityRepository.cs" />
+    <Compile Include="Entity\EntityRepository.cs" />
+    <Compile Include="Entity\Models\EntityItem.cs" />
+    <Compile Include="Http\Models\AuthResponse.cs" />
+    <Compile Include="Http\Enums\TaskStatus.cs" />
+    <Compile Include="Http\Enums\QueryMethod.cs" />
+    <Compile Include="Http\Models\ResponseErrorEventArgs.cs" />
+    <Compile Include="Http\Models\ResponseEventArgs.cs" />
+    <Compile Include="Http\Models\RequestEventArgs.cs" />
+    <Compile Include="Http\ILexalyticsRepositoryClient.cs" />
+    <Compile Include="Http\QueryParameterComparer.cs" />
+    <Compile Include="Http\QueryParameters.cs" />
+    <Compile Include="ILexalyticsApiKeys.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Http\LexalyticsRepositoryClient.cs" />
+    <Compile Include="Query\IQueryRepository.cs" />
+    <Compile Include="Query\Models\QueryItem.cs" />
+    <Compile Include="Query\QueryRepository.cs" />
+    <Compile Include="SentimentPhrase\ISentimentPhraseRepository.cs" />
+    <Compile Include="SentimentPhrase\Models\SentimentPhraseItem.cs" />
+    <Compile Include="SentimentPhrase\SentimentPhraseRepository.cs" />
+    <Compile Include="Taxonomy\ITaxonomyRepository.cs" />
+    <Compile Include="Taxonomy\Models\TaxonomyItem.cs" />
+    <Compile Include="Taxonomy\Models\TaxonomyTopic.cs" />
+    <Compile Include="Taxonomy\TaxonomyRepository.cs" />
+    <Compile Include="Template\ITemplateRepository.cs" />
+    <Compile Include="Template\Models\TemplateItem.cs" />
+    <Compile Include="Template\Models\TemplateCollection.cs" />
+    <Compile Include="Template\Models\TemplateDocument.cs" />
+    <Compile Include="Template\TemplateRepository.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52022</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

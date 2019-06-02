@@ -1,0 +1,29 @@
+﻿---
+ID: "9747ff80-b53b-4581-b2f7-993299e2b510"
+Parent: "3b515c61-9a23-46a6-8a57-4e7747df9324"
+Template: "3b515c61-9a23-46a6-8a57-4e7747df9324"
+Path: /sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/API Folder/__Standard Values
+DB: master
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Type: TreelistEx
+  Value: |
+    {F3AC1BD5-BB00-4205-A9BD-5CB44F5EEB55}
+    {1BF5B824-D391-4EAC-B33B-9DD514DCEC86}
+    {135811FB-0956-4143-BB99-ECB85C7458ED}
+    {8934C2B6-9C60-4E19-A03A-C09A991BD3E3}
+    {005326D1-DF5D-4E59-8E4C-CB1180C7C31D}
+    {D7139B0D-35A2-4BBE-9C25-616E69CC2523}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180101T201911Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

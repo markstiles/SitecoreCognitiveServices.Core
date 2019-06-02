@@ -1,0 +1,24 @@
+﻿---
+ID: "32ac38f9-d779-4fc3-ab67-e03a6f167d10"
+Parent: "005326d1-df5d-4e59-8e4c-cb1180c7c31d"
+Template: "005326d1-df5d-4e59-8e4c-cb1180c7c31d"
+Path: /sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/NexSDK/__Standard Values
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20181108T151507Z
+    - ID: "45443d15-b844-4bd3-8388-c642651383a0"
+      Hint: Client Version
+      Value: "Nexosis-DotNet-API-Client/1.0"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "c58e7b79-733a-426f-9c8d-241954e04b55"
+      Hint: Endpoint
+      Value: "https://ml.nexosis.com/v1/"

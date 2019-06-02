@@ -1,0 +1,18 @@
+﻿---
+ID: "dc45df92-2f01-469d-bfe5-94ec1192ebfd"
+Parent: "d7139b0d-35a2-4bbe-9c25-616e69cc2523"
+Template: "d7139b0d-35a2-4bbe-9c25-616e69cc2523"
+Path: /sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/TRSDK/__Standard Values
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20181108T151630Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

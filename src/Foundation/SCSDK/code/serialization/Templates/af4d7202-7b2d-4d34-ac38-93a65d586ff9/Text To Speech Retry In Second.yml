@@ -1,0 +1,21 @@
+﻿---
+ID: "29a8cad0-32df-4dcd-aa9b-eaf24af9a0f7"
+Parent: "af4d7202-7b2d-4d34-ac38-93a65d586ff9"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/IBMSDK/Text To Speech/Text To Speech Retry In Seconds
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180622T184416Z

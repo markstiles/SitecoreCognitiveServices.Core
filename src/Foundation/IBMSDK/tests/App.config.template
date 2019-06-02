@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <appSettings>
+        <add key="IBMSDK.AssistantUsername" value="${CognitiveService.ApiKey.IBMSDK.Assistant.Username}" />
+        <add key="IBMSDK.AssistantPassword" value="${CognitiveService.ApiKey.IBMSDK.Assistant.Password}" />
+        <add key="IBMSDK.AssistantEndpoint" value="${CognitiveService.ApiKey.IBMSDK.Assistant.Endpoint}" />
+        <add key="IBMSDK.AssistantRetryInSeconds" value="${CognitiveService.ApiKey.IBMSDK.Assistant.RetryInSeconds}" />
+        <add key="IBMSDK.DiscoveryUsername" value="${CognitiveService.ApiKey.IBMSDK.Discovery.Username}" />
+        <add key="IBMSDK.DiscoveryPassword" value="${CognitiveService.ApiKey.IBMSDK.Discovery.Password}" />
+        <add key="IBMSDK.DiscoveryEndpoint" value="${CognitiveService.ApiKey.IBMSDK.Discovery.Endpoint}" />
+        <add key="IBMSDK.DiscoveryRetryInSeconds" value="${CognitiveService.ApiKey.IBMSDK.Discovery.RetryInSeconds}" />
+        <add key="IBMSDK.LanguageTranslatorUsername" value="${CognitiveService.ApiKey.IBMSDK.LanguageTranslator.Username}" />
+        <add key="IBMSDK.LanguageTranslatorPassword" value="${CognitiveService.ApiKey.IBMSDK.LanguageTranslator.Password}" />
+        <add key="IBMSDK.LanguageTranslatorEndpoint" value="${CognitiveService.ApiKey.IBMSDK.LanguageTranslator.Endpoint}" />
+        <add key="IBMSDK.LanguageTranslatorRetryInSeconds" value="${CognitiveService.ApiKey.IBMSDK.LanguageTranslator.RetryInSeconds}" />
+        <add key="IBMSDK.NaturalLanguageClassifier" value="${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier}" />
+        <add key="IBMSDK.NaturalLanguageClassifierEndpoint" value="${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Endpoint}" />
+        <add key="IBMSDK.NaturalLanguageClassifierUsername" value="${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Username}" />
+        <add key="IBMSDK.NaturalLanguageClassifierPassword" value="${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Password}" />
+        <add key="IBMSDK.NaturalLanguageClassifierRetryInSeconds" value="${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.RetryInSeconds}" />
+        <add key="IBMSDK.PersonalityInsightsUsername" value="${CognitiveService.ApiKey.IBMSDK.PersonalityInsights.Username}" />
+        <add key="IBMSDK.PersonalityInsightsPassword" value="${CognitiveService.ApiKey.IBMSDK.PersonalityInsights.Password}" />
+        <add key="IBMSDK.PersonalityInsightsEndpoint" value="${CognitiveService.ApiKey.IBMSDK.PersonalityInsights.Endpoint}" />
+        <add key="IBMSDK.PersonalityInsightsRetryInSeconds" value="${CognitiveService.ApiKey.IBMSDK.PersonalityInsights.RetryInSeconds}" />
+        <add key="IBMSDK.SpeechToTextUsername" value="${CognitiveService.ApiKey.IBMSDK.SpeechToText.Username}" />
+        <add key="IBMSDK.SpeechToTextPassword" value="${CognitiveService.ApiKey.IBMSDK.SpeechToText.Password}" />
+        <add key="IBMSDK.SpeechToTextEndpoint" value="${CognitiveService.ApiKey.IBMSDK.SpeechToText.Endpoint}" />
+        <add key="IBMSDK.SpeechToTextRetryInSeconds" value="${CognitiveService.ApiKey.IBMSDK.SpeechToText.RetryInSeconds}" />
+        <add key="IBMSDK.TextToSpeechUsername" value="${CognitiveService.ApiKey.IBMSDK.TextToSpeech.Username}" />
+        <add key="IBMSDK.TextToSpeechPassword" value="${CognitiveService.ApiKey.IBMSDK.TextToSpeech.Password}" />
+        <add key="IBMSDK.TextToSpeechEndpoint" value="${CognitiveService.ApiKey.IBMSDK.TextToSpeech.Endpoint}" />
+        <add key="IBMSDK.TextToSpeechRetryInSeconds" value="${CognitiveService.ApiKey.IBMSDK.TextToSpeech.RetryInSeconds}" />
+        <add key="IBMSDK.ToneAnalyzerUsername" value="${CognitiveService.ApiKey.IBMSDK.ToneAnalyzer.Username}" />
+        <add key="IBMSDK.ToneAnalyzerPassword" value="${CognitiveService.ApiKey.IBMSDK.ToneAnalyzer.Password}" />
+        <add key="IBMSDK.ToneAnalyzerEndpoint" value="${CognitiveService.ApiKey.IBMSDK.ToneAnalyzer.Endpoint}" />
+        <add key="IBMSDK.ToneAnalyzerRetryInSeconds" value="${CognitiveService.ApiKey.IBMSDK.ToneAnalyzer.RetryInSeconds}" />
+        <add key="IBMSDK.VisualRecognition" value="${CognitiveService.ApiKey.IBMSDK.VisualRecognition}" />
+        <add key="IBMSDK.VisualRecognitionEndpoint" value="${CognitiveService.ApiKey.IBMSDK.VisualRecognition.Endpoint}" />
+        <add key="IBMSDK.VisualRecognitionRetryInSeconds" value="${CognitiveService.ApiKey.IBMSDK.VisualRecognition.RetryInSeconds}"  />
+    </appSettings>
+    <runtime>
+        <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+            <dependentAssembly>
+                <assemblyIdentity name="Castle.Core" publicKeyToken="407dd0808d44fbdc" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-4.0.0.0" newVersion="4.0.0.0" />
+            </dependentAssembly>
+            <dependentAssembly>
+                <assemblyIdentity name="Newtonsoft.Json" culture="neutral" publicKeyToken="30ad4fe6b2a6aeed"/>
+                <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0"/>
+            </dependentAssembly>
+            <dependentAssembly>
+                <assemblyIdentity name="Microsoft.Extensions.DependencyInjection.Abstractions" publicKeyToken="adb9793829ddae60" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-1.1.0.0" newVersion="1.1.0.0" />
+            </dependentAssembly>
+        </assemblyBinding>
+    </runtime>
+</configuration>

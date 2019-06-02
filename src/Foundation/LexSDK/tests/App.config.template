@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <appSettings>
+        <add key="LexSDK.ApiVersion" value="${CognitiveService.ApiKey.LexSDK.ApiVersion}" />
+        <add key="LexSDK.AppName" value="${CognitiveService.ApiKey.LexSDK.AppName}" />
+        <add key="LexSDK.AuthAppKey" value="${CognitiveService.ApiKey.LexSDK.AuthAppKey}" />
+        <add key="LexSDK.AuthHost" value="${CognitiveService.ApiKey.LexSDK.AuthHost}" />
+        <add key="LexSDK.ConsumerKey" value="${CognitiveService.ApiKey.LexSDK.ConsumerKey}" />
+        <add key="LexSDK.ConsumerSecret" value="${CognitiveService.ApiKey.LexSDK.ConsumerSecret}" />
+        <add key="LexSDK.Format" value="${CognitiveService.ApiKey.LexSDK.Format}" />
+        <add key="LexSDK.Host" value="${CognitiveService.ApiKey.LexSDK.Host}" />
+        <add key="LexSDK.Password" value="${CognitiveService.ApiKey.LexSDK.Password}" />
+        <add key="LexSDK.UseCompression" value="${CognitiveService.ApiKey.LexSDK.UseCompression}" />
+        <add key="LexSDK.Username" value="${CognitiveService.ApiKey.LexSDK.Username}" />
+        <add key="LexSDK.WrapperName" value="${CognitiveService.ApiKey.LexSDK.WrapperName}" />
+    </appSettings>
+    <runtime>
+        <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+            <dependentAssembly>
+                <assemblyIdentity name="Castle.Core" publicKeyToken="407dd0808d44fbdc" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-4.0.0.0" newVersion="4.0.0.0" />
+            </dependentAssembly>
+            <dependentAssembly>
+                <assemblyIdentity name="Newtonsoft.Json" culture="neutral" publicKeyToken="30ad4fe6b2a6aeed"/>
+                <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0"/>
+            </dependentAssembly>
+            <dependentAssembly>
+                <assemblyIdentity name="Microsoft.Extensions.DependencyInjection.Abstractions" publicKeyToken="adb9793829ddae60" culture="neutral" />
+                <bindingRedirect oldVersion="0.0.0.0-1.1.0.0" newVersion="1.1.0.0" />
+            </dependentAssembly>
+        </assemblyBinding>
+    </runtime>
+</configuration>
