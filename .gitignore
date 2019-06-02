@@ -268,3 +268,4 @@ nuget.exe
 src/Foundation/NexSDK/tests/App.config
 *.nuspec
 /src/Feature
+/SitecoreCognitiveServices.sln
