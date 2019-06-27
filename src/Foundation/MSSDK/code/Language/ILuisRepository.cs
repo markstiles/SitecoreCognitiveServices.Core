@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 namespace SitecoreCognitiveServices.Foundation.MSSDK.Language { 
     public interface ILuisRepository
     {
-        LuisResult Query(Guid appId, string query);
-        Task<LuisResult> QueryAsync(Guid appId, string query);
+        LuisResult Query(Guid appId, string query, bool spellCheck = false);
+        Task<LuisResult> QueryAsync(Guid appId, string query, bool spellCheck = false);
         string AddApplication(AddApplicationRequest request);
         Task<string> AddApplicationAsync(AddApplicationRequest request);
         void DeleteApplication(Guid appId);

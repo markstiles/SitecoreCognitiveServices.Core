@@ -46,15 +46,24 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Language {
 
         #region Querying
 
-        public virtual LuisResult Query(Guid appId, string query) {
-            var response = RepositoryClient.SendGet(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisQueryUrl}{appId}?subscription-key={ApiKeys.Luis}&verbose=true&q={query}");
+        public virtual LuisResult Query(Guid appId, string query, bool spellCheck = false)
+        {
+            var spellCheckQS = spellCheck
+                ? $"&spellCheck=true&bing-spell-check-subscription-key={ApiKeys.BingSpellCheck}"
+                : "";
+
+            var response = RepositoryClient.SendGet(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisQueryUrl}{appId}?subscription-key={ApiKeys.Luis}&verbose=true&q={query}{spellCheckQS}");
 
             return JsonConvert.DeserializeObject<LuisResult>(response);
         }
 
-        public virtual async Task<LuisResult> QueryAsync(Guid appId, string query)
+        public virtual async Task<LuisResult> QueryAsync(Guid appId, string query, bool spellCheck = false)
         {
-            var response = await RepositoryClient.SendGetAsync(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisQueryUrl}{appId}?subscription-key={ApiKeys.Luis}&verbose=true&q={query}");
+            var spellCheckQS = spellCheck
+                ? $"&spellCheck=true&bing-spell-check-subscription-key={ApiKeys.BingSpellCheck}"
+                : "";
+
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.Luis, $"{ApiKeys.LuisEndpoint}{luisQueryUrl}{appId}?subscription-key={ApiKeys.Luis}&verbose=true&q={query}{spellCheckQS}");
 
             return JsonConvert.DeserializeObject<LuisResult>(response);
         }
