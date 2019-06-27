@@ -68,6 +68,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
                 inConversation = true;
             }
                 
+            // continue conversation
             if (inConversation)
                 return HandleConversation(conversation, context);
 
