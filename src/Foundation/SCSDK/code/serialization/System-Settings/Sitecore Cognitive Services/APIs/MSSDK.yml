@@ -19,7 +19,7 @@ SharedFields:
   Value: "https://westus.api.cognitive.microsoft.com/vision/v2.0/"
 - ID: "19280bba-089c-46bd-a26f-844f84e684ad"
   Hint: Bing Spell Check Endpoint
-  Value: "https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/"
+  Value: "https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/"
 - ID: "27c94d4c-0af9-4101-9369-103c601b3657"
   Hint: Text Analytics
   Value: 
@@ -91,7 +91,7 @@ SharedFields:
   Value: 1
 - ID: "8b3eefac-d464-47a9-92a6-eae52b7343f4"
   Hint: Bing Search Endpoint
-  Value: "https://api.cognitive.microsoft.com/bing/v5.0/"
+  Value: "https://api.cognitive.microsoft.com/bing/v7.0/"
 - ID: "8fe5d953-7ce1-4a15-b226-91763c4f0e3a"
   Hint: Face Retry In Seconds
   Value: 60

@@ -28,14 +28,14 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language {
             Logger = logger;
         }
 
-        public virtual LuisResult Query(Guid appId, string query)
+        public virtual LuisResult Query(Guid appId, string query, bool spellCheck = false)
         {
             return PolicyService.ExecuteRetryAndCapture400Errors(
                 "LuisService.Query",
                 ApiKeys.LuisRetryInSeconds,
                 () =>
                 {
-                    var result = LuisRepository.Query(appId, query);
+                    var result = LuisRepository.Query(appId, query, spellCheck);
                     return result;
                 },
                 null);
