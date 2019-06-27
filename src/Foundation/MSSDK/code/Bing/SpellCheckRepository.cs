@@ -20,36 +20,40 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Bing {
             RepositoryClient = repoClient;
         }
 
-        protected virtual string GetSpellCheckQuerystring(SpellCheckModeOptions mode, string languageCode)
+        protected virtual string GetSpellCheckQuerystring(string text, SpellCheckModeOptions mode, string languageCode)
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append($"?text={text}");
+
             if (mode != SpellCheckModeOptions.None)
-                sb.Append($"?mode={Enum.GetName(typeof(SpellCheckModeOptions), mode)}");
+                sb.Append($"&mode={Enum.GetName(typeof(SpellCheckModeOptions), mode).ToLower()}");
 
-            if (!string.IsNullOrEmpty(languageCode)) {
-                var concat = (sb.Length > 0) ? "?" : "&";
-                sb.Append($"{concat}mkt={languageCode}");
-            }
-
+            if (!string.IsNullOrEmpty(languageCode))
+                sb.Append($"&mkt={languageCode}");
+            
             return sb.ToString();
         }
 
         public virtual SpellCheckResponse SpellCheck(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
         {
-            var qs = GetSpellCheckQuerystring(mode, languageCode);
+            var qs = GetSpellCheckQuerystring(text, mode, languageCode);
+            
+            var response = RepositoryClient.SendGet(ApiKeys.BingSpellCheck, $"{ApiKeys.BingSpellCheckEndpoint}{qs}");
 
-            var response = RepositoryClient.SendEncodedFormPost(ApiKeys.BingSpellCheck, $"{ApiKeys.BingSpellCheckEndpoint}{qs}", $"Text={text}");
+            var obj = JsonConvert.DeserializeObject<SpellCheckResponse>(response);
 
-            return JsonConvert.DeserializeObject<SpellCheckResponse>(response);
+            return obj;
         }
 
         public virtual async Task<SpellCheckResponse> SpellCheckAsync(string text, SpellCheckModeOptions mode = SpellCheckModeOptions.None, string languageCode = "")
         {
-            var qs = GetSpellCheckQuerystring(mode, languageCode);
+            var qs = GetSpellCheckQuerystring(text, mode, languageCode);
                     
-            var response = await RepositoryClient.SendEncodedFormPostAsync(ApiKeys.BingSpellCheck, $"{ApiKeys.BingSpellCheckEndpoint}{qs}", $"Text={text}");
+            var response = await RepositoryClient.SendGetAsync(ApiKeys.BingSpellCheck, $"{ApiKeys.BingSpellCheckEndpoint}{qs}");
 
-            return JsonConvert.DeserializeObject<SpellCheckResponse>(response);
+            var obj = JsonConvert.DeserializeObject<SpellCheckResponse>(response);
+
+            return obj;
         }
     }
 }
