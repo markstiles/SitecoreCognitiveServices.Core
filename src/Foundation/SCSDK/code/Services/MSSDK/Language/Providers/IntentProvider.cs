@@ -18,7 +18,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Pro
         {
             _intentDictionary = provider.GetServices<IIntent>()
                 .GroupBy(g => g.ApplicationId)
-                .ToDictionary(a => a.Key, a => a.ToDictionary(b => b.Name));
+                .ToDictionary(a => a.Key, a => a.ToDictionary(b => b.KeyName));
 
             ConversationResponseFactory = responseFactory;
         }

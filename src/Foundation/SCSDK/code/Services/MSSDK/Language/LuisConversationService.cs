@@ -54,7 +54,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             var isConfident = context.Result.TopScoringIntent.Score > ApiKeys.LuisIntentConfidenceThreshold;
             var hasValidIntent = intent != null && isConfident;
             var inConversation = conversation != null && !conversation.IsEnded;
-            var requestedQuit = hasValidIntent && intent.Name.Equals(context.QuitIntentName);
+            var requestedQuit = hasValidIntent && intent.KeyName.Equals(context.QuitIntentName);
 
             // if the user is trying to end or finish a conversation 
             if (inConversation && requestedQuit)
@@ -115,7 +115,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
 
             // confirm selected options with user 
             if (conversation.Intent.RequiresConfirmation && !conversation.IsConfirmed)
-                return ConversationResponseFactory.Create(conversation.Intent.Name, context.ConfirmText, conversation.IsEnded, "confirm", conversation.Context);
+                return ConversationResponseFactory.Create(conversation.Intent.KeyName, context.ConfirmText, conversation.IsEnded, "confirm", conversation.Context);
 
             conversation.IsEnded = true;
 
@@ -212,7 +212,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             if (string.IsNullOrWhiteSpace(message))
                 message = param.ParamMessage;
 
-            return ConversationResponseFactory.Create(c.Intent.Name, message, c.IsEnded, param.GetInput(parameters, c));
+            return ConversationResponseFactory.Create(c.Intent.KeyName, message, c.IsEnded, param.GetInput(parameters, c));
         }
     }
 }

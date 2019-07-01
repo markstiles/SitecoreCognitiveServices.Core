@@ -6,8 +6,8 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
 {
     public interface IIntent {
         Guid ApplicationId { get; }
-        string Name { get; }
-        string Description { get; }
+        string KeyName { get; }
+        string DisplayName { get; }
         bool RequiresConfirmation { get; }
         List<IRequiredConversationParameter> ConversationParameters { get; }
         ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation);
