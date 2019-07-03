@@ -14,9 +14,6 @@ SharedFields:
 - ID: "c3e64633-5f61-4fbb-8e3f-b9facfa42ca0"
   Hint: Natural Language Classifier Endpoint
   Value: "${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Endpoint}"
-- ID: "da40bbc5-afa3-4f4e-9ce3-e7626c4163ec"
-  Hint: Natural Language Classifier
-  Value: "${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier}"
 - ID: "f75da91b-ffde-41b5-9b8e-54ce9e0c5251"
   Hint: Natural Language Classifier Password
   Value: "${CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Password}"
