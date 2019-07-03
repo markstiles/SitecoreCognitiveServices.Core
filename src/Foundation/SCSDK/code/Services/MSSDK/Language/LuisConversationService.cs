@@ -75,7 +75,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             // is a user frustrated or is their intention unclear
             var sentimentScore = context.Result.SentimentAnalysis?.score ?? 1;
             return (sentimentScore <= 0.4)
-                ? IntentProvider.GetIntent(context.AppId, context.FrustratedUserIntentName)?.Respond(null, null, null) ?? IntentProvider.GetDefaultResponse(context.AppId)
+                ? IntentProvider.GetIntent(context.AppId, context.FrustratedIntentName)?.Respond(null, null, null) ?? IntentProvider.GetDefaultResponse(context.AppId)
                 : IntentProvider.GetDefaultResponse(context.AppId);
         }
         

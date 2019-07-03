@@ -10,7 +10,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Fac
 {
     public interface IConversationContextFactory
     {
-        IConversationContext Create(Guid appId, string acceptText, string clearText, string confirmText, string frustratedUserIntentName, string message, ItemContextParameters parameters, LuisResult result, string quitIntentName);
+        IConversationContext Create(Guid appId, string acceptText, string clearText, string confirmText, string frustratedIntentName, string message, ItemContextParameters parameters, LuisResult result, string quitIntentName);
     }
 
     public class ConversationContextFactory : IConversationContextFactory
@@ -23,14 +23,14 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Fac
         }
 
         public virtual IConversationContext Create(Guid appId, string acceptText, string clearText, string confirmText, 
-            string frustratedUserIntentName, string message, ItemContextParameters parameters, LuisResult result, string quitIntentName)
+            string frustratedIntentName, string message, ItemContextParameters parameters, LuisResult result, string quitIntentName)
         {
             var convo = Provider.GetService<IConversationContext>();
             convo.AppId = appId;
             convo.AcceptText = acceptText;
             convo.ClearText = clearText;
             convo.ConfirmText = confirmText;
-            convo.FrustratedUserIntentName = frustratedUserIntentName;
+            convo.FrustratedIntentName = frustratedIntentName;
             convo.Message = message;
             convo.Parameters = parameters;
             convo.Result = result;

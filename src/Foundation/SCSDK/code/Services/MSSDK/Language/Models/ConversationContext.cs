@@ -13,7 +13,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
         public LuisResult Result { get; set; }
         public ItemContextParameters Parameters { get; set; }
         public string QuitIntentName { get; set; }
-        public string FrustratedUserIntentName { get; set; }
+        public string FrustratedIntentName { get; set; }
         public string ClearText { get; set; }
         public string AcceptText { get; set; }
         public string ConfirmText { get; set; }
