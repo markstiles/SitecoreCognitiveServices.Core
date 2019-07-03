@@ -1,4 +1,5 @@
-﻿using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Enums;
+﻿using SitecoreCognitiveServices.Foundation.MSSDK.Language.Models.Luis;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
     {
         string ParamName { get; set;  }
         string ParamMessage { get; set; }
-        IParameterResult GetParameter(string paramValue, ItemContextParameters parameters, IConversation conversation);
+        IParameterResult GetParameter(string paramValue, IConversationContext context, ItemContextParameters parameters, IConversation conversation);
         IntentInput GetInput(ItemContextParameters parameters, IConversation conversation);
     }
 }

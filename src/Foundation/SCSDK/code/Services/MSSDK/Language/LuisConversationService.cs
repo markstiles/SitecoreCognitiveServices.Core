@@ -22,6 +22,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         protected readonly IParameterResultFactory ResultFactory;
 
         protected string ReqParam = "RequestParam";
+        protected string ReqConfirm = "RequestConfirm";
 
         public LuisConversationService(
             IIntentProvider intentProvider,
@@ -71,7 +72,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             // continue conversation
             if (inConversation)
                 return HandleConversation(conversation, context);
-
+            
             // is a user frustrated or is their intention unclear
             var sentimentScore = context.Result.SentimentAnalysis?.score ?? 1;
             return (sentimentScore <= 0.4)
@@ -101,7 +102,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             // check and request all required parameters of a conversation
             foreach (IRequiredConversationParameter p in conversation.Intent.ConversationParameters)
             {
-                var parameterResult = TryGetParam(p, context.Result, conversation, context.Parameters);
+                var parameterResult = TryGetParam(p, context, conversation, context.Parameters);
                 if (!parameterResult.HasFailed)
                     continue;
 
@@ -110,12 +111,19 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
 
             // save confirmation
             if (conversation.Intent.RequiresConfirmation
-                && context.Message.Equals(context.AcceptText, StringComparison.InvariantCultureIgnoreCase))
+                && conversation.Data.ContainsKey(ReqConfirm)
+                && context.Result.TopScoringIntent.Intent.Equals(context.YesIntentName, StringComparison.InvariantCultureIgnoreCase))
+            {
                 conversation.IsConfirmed = true;
+                conversation.Data.Remove(ReqConfirm);
+            }                
 
             // confirm selected options with user 
             if (conversation.Intent.RequiresConfirmation && !conversation.IsConfirmed)
+            {
+                conversation.Data[ReqConfirm] = "confirm";
                 return ConversationResponseFactory.Create(conversation.Intent.KeyName, context.ConfirmText, conversation.IsEnded, "confirm", conversation.Context);
+            }
 
             conversation.IsEnded = true;
 
@@ -131,7 +139,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <param name="parameters">the context paramters</param>
         /// <param name="GetValidParameter">the method that can retrieve the valid parameters for a valid user input</param>
         /// <returns></returns>
-        public virtual IParameterResult TryGetParam(IRequiredConversationParameter param, LuisResult result, IConversation c, ItemContextParameters parameters)
+        public virtual IParameterResult TryGetParam(IRequiredConversationParameter param, IConversationContext context, IConversation c, ItemContextParameters parameters)
         {
             var storedValue = c.Data.ContainsKey(param.ParamName)
                 ? c.Data[param.ParamName]
@@ -140,11 +148,11 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             if (storedValue != null)
                 return ResultFactory.GetSuccess(storedValue);
 
-            string value = GetUserValue(param.ParamName, result, c);
+            string value = GetUserValue(param.ParamName, context.Result, c);
             if (string.IsNullOrEmpty(value))
                 return ResultFactory.GetFailure();
             
-            var paramResult = param.GetParameter(value, parameters, c);
+            var paramResult = param.GetParameter(value, context, parameters, c);
             if (paramResult.HasFailed)
                 return paramResult;
             

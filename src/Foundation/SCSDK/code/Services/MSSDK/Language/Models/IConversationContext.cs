@@ -14,8 +14,9 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
         ItemContextParameters Parameters { get; set; }
         string QuitIntentName { get; set; }
         string FrustratedIntentName { get; set; }
+        string YesIntentName { get; set; }
+        string NoIntentName { get; set; }
         string ClearText { get; set; }
-        string AcceptText { get; set; }
         string ConfirmText { get; set; }
     }
 }
