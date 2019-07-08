@@ -11,7 +11,9 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
         public string InputType => Enum.GetName(typeof(IntentInputType), Type);
         public List<ListItem> Options { get; set; }
         public string InputLabel { get; set; }
-        
+        public Dictionary<string, string> Parameters { get; set; }
+
+
         public void AddOption(string key, string value)
         {
             Options.Add(new ListItem(key, value));

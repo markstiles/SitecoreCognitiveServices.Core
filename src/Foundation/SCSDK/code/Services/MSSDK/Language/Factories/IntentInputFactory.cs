@@ -10,25 +10,26 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Fac
 {
     public interface IIntentInputFactory
     {
-        IntentInput Create(IntentInputType type, string inputLabel = "");
-        IntentInput Create(IntentInputType type, List<ListItem> options, string inputLabel = "");
+        IntentInput Create(IntentInputType type, string inputLabel = "", Dictionary<string, string> parameters = null);
+        IntentInput Create(IntentInputType type, List<ListItem> options, string inputLabel = "", Dictionary<string, string> parameters = null);
     }
 
     public class IntentInputFactory : IIntentInputFactory
     {
-        public IntentInput Create(IntentInputType type, string inputLabel = "")
+        public IntentInput Create(IntentInputType type, string inputLabel = "", Dictionary<string, string> parameters = null)
         {
             return new IntentInput()
             {
                 Type = type,
                 InputLabel = inputLabel,
+                Parameters = parameters ?? new Dictionary<string, string>(),
                 Options = new List<ListItem>()
             };
         }
 
-        public IntentInput Create(IntentInputType type, List<ListItem> options, string inputLabel = "")
+        public IntentInput Create(IntentInputType type, List<ListItem> options, string inputLabel = "", Dictionary<string, string> parameters = null)
         {
-            var os = Create(type, inputLabel);
+            var os = Create(type, inputLabel, parameters);
             os.Options = options;
 
             return os;
