@@ -22,24 +22,22 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.RetryPolicies
         public T ExecuteRetryAndCapture400Errors<T>(string requestType, int retryInSeconds, Func<T> action, T defaultValue)
         {
             var policyResult = Policy
-                .Handle<WebException>(ex => ex.Message.Contains("(429) Too Many Requests"))
+                .Handle<WebException>(CheckError)
                 .WaitAndRetry(
                     3,
                     retryAttempt => TimeSpan.FromSeconds(retryInSeconds),
                     (exception, span) =>
                     {
-                        //{ "statusCode": 429, "message": "Rate limit is exceeded. Try again in 38 seconds." }
                         Logger.Info($"{requestType} failed: Too Many Requests. will retry", this);
                     })
                 .ExecuteAndCapture(action);
 
             if (policyResult.Outcome == OutcomeType.Failure)
             {
-                var additionalInfo = (policyResult.FinalException.Message.Contains("(400) Bad Request"))
-                    ? "; image didn't fit the API requirements"
-                    : string.Empty;
+                var exceptionMessage = policyResult?.FinalException?.Message ?? "";
+                var innerExceptionMessage = policyResult?.FinalException?.InnerException?.Message ?? "";
 
-                additionalInfo += (policyResult.FinalException.Message.Contains("(401) Unauthorized"))
+                var additionalInfo = (exceptionMessage.Contains("(401) Unauthorized") || innerExceptionMessage.Contains("401"))
                     ? "; api key or url is incorrect"
                     : string.Empty;
 
@@ -51,6 +49,17 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.RetryPolicies
             Logger.Info($"{requestType} Succeeded", this);
 
             return policyResult.Result;
+        }
+
+        public bool CheckError(WebException wex)
+        {
+            if (wex.Message.Contains("429"))
+                return true;
+
+            if (wex.InnerException != null && wex.InnerException.Message.Contains("429"))
+                return true;
+
+            return false;
         }
     }
 }

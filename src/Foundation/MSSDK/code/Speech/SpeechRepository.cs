@@ -5,6 +5,8 @@ using SitecoreCognitiveServices.Foundation.MSSDK.Enums;
 using SitecoreCognitiveServices.Foundation.MSSDK.Bing.Models.Speech;
 using Newtonsoft.Json;
 using SitecoreCognitiveServices.Foundation.MSSDK.Http;
+using System.Web;
+using System.Web.Caching;
 
 namespace SitecoreCognitiveServices.Foundation.MSSDK.Speech
 {
@@ -60,14 +62,14 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Speech
         }
 
         public virtual Stream TextToSpeech(string text, SpeechLocaleOptions locale, VoiceName voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat) {
-            var response = Task.Run(async() => await RepositoryClient.GetAudioStreamAsync(
+            var response = RepositoryClient.GetAudioStream(
                 ApiKeys.SpeechEndpoint,
                 text,
                 locale,
                 voiceName,
                 voiceType,
                 outputFormat,
-                GetSpeechToken())).Result;
+                GetSpeechToken());
 
             return response;
         }
@@ -88,7 +90,16 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Speech
 
         public virtual string GetSpeechToken()
         {
-            return RepositoryClient.SendSpeechTokenRequest(ApiKeys.SpeechTokenEndpoint, ApiKeys.Speech);
+            var key = $"SpeechToken-{ApiKeys.Speech}";
+            var isInCache = HttpRuntime.Cache[key] != null;
+            var token = isInCache
+                ? (string)HttpRuntime.Cache[key]
+                : RepositoryClient.SendSpeechTokenRequest(ApiKeys.SpeechTokenEndpoint, ApiKeys.Speech);
+
+            if (!isInCache)
+                HttpRuntime.Cache.Add(key, token, null, DateTime.UtcNow.AddMinutes(10), Cache.NoSlidingExpiration, CacheItemPriority.Normal, null);
+            
+            return token;
         }
     }
 }

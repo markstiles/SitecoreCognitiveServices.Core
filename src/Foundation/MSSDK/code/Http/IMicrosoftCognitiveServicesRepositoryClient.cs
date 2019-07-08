@@ -42,6 +42,7 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Http
         string SendOperationPost(string apiKey, string url, string data);
         string SendOctetOperationPost(string apiKey, string url, Stream stream);
         string SendOperationPost(string apiKey, string url, byte[] data, string contentType);
+        Stream GetAudioStream(string url, string text, SpeechLocaleOptions locale, VoiceName voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat, string token);
         Task<Stream> GetAudioStreamAsync(string url, string text, SpeechLocaleOptions locale, VoiceName voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat, string token);
         TokenResponse SendContentModeratorTokenRequest(string apiKey, string clientId);
         string SendSpeechTokenRequest(string url, string apiKey);

@@ -105,7 +105,8 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Speech
                 {
                     using (var dataStream = TextToSpeech(t, locale, voiceName, voiceType, outputFormat))
                     {
-                        dataStream.CopyTo(fileStream);
+                        if(dataStream != null)
+                            dataStream.CopyTo(fileStream);
                     }
                 }
                 fileStream.Close();

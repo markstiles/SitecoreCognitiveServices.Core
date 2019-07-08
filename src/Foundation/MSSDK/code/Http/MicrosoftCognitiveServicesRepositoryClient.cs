@@ -420,6 +420,37 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Http
             return speakTag;
         }
         
+        public virtual Stream GetAudioStream(string url, string text, SpeechLocaleOptions locale, VoiceName voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat, string token)
+        {
+            // Construct HTTP request to get the logo
+            HttpWebRequest httpRequest = (HttpWebRequest)
+            WebRequest.Create(url);
+            httpRequest.Method = WebRequestMethods.Http.Post;
+
+            var headers = GetAudioHeaders(token, outputFormat);
+            httpRequest.Headers.Add("X-Microsoft-OutputFormat", outputFormat.MemberAttrValue());
+            httpRequest.Headers.Add("Authorization", $"Bearer {token}");
+            httpRequest.ContentType = "application/ssml+xml";
+            httpRequest.UserAgent = "TTSClient";            
+
+            byte[] reqData = Encoding.UTF8.GetBytes(GetAudioContent(text, locale, voiceName, voiceType));
+            httpRequest.ContentLength = (long)reqData.Length;
+            Stream requestStream = httpRequest.GetRequestStream();
+            requestStream.Write(reqData, 0, reqData.Length);
+            requestStream.Close();
+
+            // Get back the HTTP response for web server
+            HttpWebResponse httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+            Stream httpResponseStream = httpResponse.GetResponseStream();
+            
+            var newStream = new MemoryStream();
+            httpResponseStream.CopyTo(newStream);
+            httpResponse.Close();
+            newStream.Position = 0;
+
+            return newStream;
+        }
+
         public virtual async Task<Stream> GetAudioStreamAsync(string url, string text, SpeechLocaleOptions locale, VoiceName voiceName, GenderOptions voiceType, AudioOutputFormatOptions outputFormat, string token)
         {
             HttpClientHandler handler = new HttpClientHandler() { CookieContainer = new CookieContainer(), UseProxy = false };
@@ -439,7 +470,7 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Http
 
             var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, CancellationToken.None);
             if (!response.IsSuccessStatusCode)
-                throw new Exception($"{response.StatusCode}:{response.ReasonPhrase}");
+                throw new Exception($"({response.StatusCode}) {response.ReasonPhrase}");
 
             return await response.Content.ReadAsStreamAsync();
         }
