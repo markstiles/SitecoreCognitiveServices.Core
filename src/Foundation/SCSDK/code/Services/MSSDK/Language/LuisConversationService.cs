@@ -44,7 +44,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
 
         public ConversationResponse HandleMessage(IConversationContext context)
         {
-            if (string.IsNullOrWhiteSpace(context.Message) || context.Result == null)
+            if (string.IsNullOrWhiteSpace(context.Result.Query) || context.Result == null)
                 return IntentProvider.GetDefaultResponse(context.AppId);
 
             IConversation conversation = (ConversationHistory.Conversations.Any())
@@ -90,9 +90,9 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         public ConversationResponse HandleConversation(IConversation conversation, IConversationContext context)
         {
             var clear = $"{context.ClearText} ";
-            if (context.Message.StartsWith(clear))
+            if (context.Result.Query.StartsWith(clear))
             {
-                var clearParam = context.Message.Replace(clear, "");
+                var clearParam = context.Result.Query.Replace(clear, "");
                 if (conversation.Context.ContainsKey(clearParam))
                     conversation.Context.Remove(clearParam);
                 if (conversation.Data.ContainsKey(clearParam))

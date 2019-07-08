@@ -9,7 +9,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
     public class ConversationContext : IConversationContext
     {
         public Guid AppId { get; set; }
-        public string Message { get; set; }
         public LuisResult Result { get; set; }
         public ItemContextParameters Parameters { get; set; }
         public string QuitIntentName { get; set; }
