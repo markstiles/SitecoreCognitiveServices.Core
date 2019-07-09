@@ -17,6 +17,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Pro
             IConversationResponseFactory responseFactory)
         {
             _intentDictionary = provider.GetServices<IIntent>()
+                .Where(a => a.ApplicationId != Guid.Empty)
                 .GroupBy(g => g.ApplicationId)
                 .ToDictionary(a => a.Key, a => a.ToDictionary(b => b.KeyName));
 
