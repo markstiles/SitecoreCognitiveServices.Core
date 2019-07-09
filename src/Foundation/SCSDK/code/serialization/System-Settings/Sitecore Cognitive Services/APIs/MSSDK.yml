@@ -88,7 +88,7 @@ SharedFields:
   Value: 
 - ID: "7cd0e9eb-a524-4423-8263-37f25ba340be"
   Hint: Speech Retry In Seconds
-  Value: 1
+  Value: 10
 - ID: "8b3eefac-d464-47a9-92a6-eae52b7343f4"
   Hint: Bing Search Endpoint
   Value: "https://api.cognitive.microsoft.com/bing/v7.0/"
