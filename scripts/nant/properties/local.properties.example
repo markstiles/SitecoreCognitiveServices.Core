@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- This example file contains only the bare minimum of properties required to get your local instance up 
+and running. There are additional default properties from dev.properties that you may wish to override. -->
+<project>
+  
+  <!-- Local site instance settings -->
+  <property name="Build.Configuration" value="Debug" />
+  <!-- Visual Studio Target Number: 2012 = 11.0, 2013 = 12.0, 2015 = 14.0, 2017 = 15.0-->
+  <property name="MSBuild.Version" value="15.0" />
+
+  <property name="Project.Version" value="824" />
+  <property name="Project.Protocol" value="http" />
+  <property name="Project.Domain" value="sc${Project.Version}.local" />
+  <property name="Project.Url" value="${Project.Protocol}://${Project.Domain}" />
+  <property name="Project.Name" value="SitecoreCognitiveServices" />
+  <property name="Project.RootFolder" value="D:\inetpub\wwwroot\gitroot\SitecoreCognitiveServices\" />
+  <property name="Project.Serialization" value="${Project.RootFolder}src\" />
+
+  <property name="Gulp.DeployFolder" value="D:\\inetpub\\wwwroot\\sc${Project.Version}" />
+
+  <property name="CognitiveService.Nuspec.Version" value="" />
+  <property name="CognitiveService.Nuspec.Author" value="" />
+  <property name="CognitiveService.Nuspec.LicenseUrl" value="http://" />
+  <property name="CognitiveService.Nuspec.ProjectUrl" value="http://" />
+  <property name="CognitiveService.Nuspec.RequireLicenseAcceptance" value="false" />
+  <property name="CognitiveService.Nuspec.Copyright" value="Copyright" />
+
+  <!-- API Keys -->
+  <property name="CognitiveService.ApiKey.MSSDK.Academic" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Academic.Endpoint" value="https://westus.api.cognitive.microsoft.com/academic/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Academic.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingAutosuggest" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingAutosuggest.Endpoint" value="https://api.cognitive.microsoft.com/bing/v5.0/suggestions/" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingAutosuggest.RetryInSeconds" value="0" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSearch" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSearch.Endpoint" value="https://api.cognitive.microsoft.com/bing/v5.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSearch.RetryInSeconds" value="0" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSpellCheck" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSpellCheck.Endpoint" value="https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/" />
+  <property name="CognitiveService.ApiKey.MSSDK.BingSpellCheck.RetryInSeconds" value="0" />
+  <property name="CognitiveService.ApiKey.MSSDK.ComputerVision" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.ComputerVision.Endpoint" value="https://westus.api.cognitive.microsoft.com/vision/v2.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.ComputerVision.RetryInSeconds" value="45" />
+  <property name="CognitiveService.ApiKey.MSSDK.ContentModerator" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.ContentModerator.ClientId" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.ContentModerator.PrivateKey" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.ContentModerator.Endpoint" value="https://westus.api.cognitive.microsoft.com/contentmoderator/" />
+  <property name="CognitiveService.ApiKey.MSSDK.ContentModerator.RetryInSeconds" value="0" />
+  <property name="CognitiveService.ApiKey.MSSDK.EntityLinking" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.EntityLinking.Endpoint" value="https://api.projectoxford.ai/entitylinking/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.EntityLinking.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.MSSDK.Face" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Face.Endpoint" value="https://eastus2.api.cognitive.microsoft.com/face/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Face.RetryInSeconds" value="60" />
+  <property name="CognitiveService.ApiKey.MSSDK.Luis" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Luis.Endpoint" value="https://westus.api.cognitive.microsoft.com/luis/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Luis.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.MSSDK.QnA" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.QnA.Endpoint" value="https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/" />
+  <property name="CognitiveService.ApiKey.MSSDK.QnA.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.MSSDK.Recommendations" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Recommendations.Endpoint" value="https://westus.api.cognitive.microsoft.com/recommendations/v4.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Recommendations.RetryInSeconds" value="300" />
+  <property name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition.Endpoint" value="https://westus.api.cognitive.microsoft.com/spid/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition.RetryInSeconds" value="3" />
+  <property name="CognitiveService.ApiKey.MSSDK.Speech" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Speech.Endpoint" value="https://eastus.tts.speech.microsoft.com/cognitiveservices/v1/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Speech.TokenEndpoint" value="https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken" />
+  <property name="CognitiveService.ApiKey.MSSDK.Speech.RetryInSeconds" value="10" />
+  <property name="CognitiveService.ApiKey.MSSDK.TextAnalytics" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.TextAnalytics.Endpoint" value="https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.TextAnalytics.RetryInSeconds" value="540" />
+  <property name="CognitiveService.ApiKey.MSSDK.Video" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Video.Endpoint" value="https://api.projectoxford.ai/video/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Video.RetryInSeconds" value="1" />
+
+  <property name="CognitiveService.ApiKey.IBMSDK.Assistant.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.Assistant.Password" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.Assistant.Endpoint" value="https://gateway.watsonplatform.net/assistant/api/v1/workspaces/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.Assistant.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.IBMSDK.Discovery.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.Discovery.Password" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.Discovery.Endpoint" value="https://gateway.watsonplatform.net/discovery/api/v1/environments/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.Discovery.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.IBMSDK.KnowledgeStudio.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.KnowledgeStudio.Password" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.KnowledgeStudio.InstanceId" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.KnowledgeStudio.Endpoint" value="https://ibm-watson-ml.mybluemix.net/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.KnowledgeStudio.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.IBMSDK.LanguageTranslator.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.LanguageTranslator.Password" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.LanguageTranslator.Endpoint" value="https://gateway.watsonplatform.net/language-translator/api/v2/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.LanguageTranslator.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Endpoint" value="https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.Password" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.NaturalLanguageClassifier.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.IBMSDK.PersonalityInsights.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.PersonalityInsights.Password" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.PersonalityInsights.Endpoint" value="https://gateway.watsonplatform.net/personality-insights/api/v3/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.PersonalityInsights.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.IBMSDK.SpeechToText.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.SpeechToText.Password" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.SpeechToText.Endpoint" value="https://stream.watsonplatform.net/speech-to-text/api/v1/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.SpeechToText.RetryInSeconds" value="1"  />
+  <property name="CognitiveService.ApiKey.IBMSDK.TextToSpeech.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.TextToSpeech.Password" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.TextToSpeech.Endpoint" value="https://stream.watsonplatform.net/text-to-speech/api/v1/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.TextToSpeech.RetryInSeconds" value="1"  />
+  <property name="CognitiveService.ApiKey.IBMSDK.ToneAnalyzer.Username" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.ToneAnalyzer.Password" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.ToneAnalyzer.Endpoint" value="https://gateway.watsonplatform.net/tone-analyzer/api/v3/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.ToneAnalyzer.RetryInSeconds" value="1"  />
+  <property name="CognitiveService.ApiKey.IBMSDK.VisualRecognition" value="" />
+  <property name="CognitiveService.ApiKey.IBMSDK.VisualRecognition.Endpoint" value="https://gateway-a.watsonplatform.net/visual-recognition/api/v3/" />
+  <property name="CognitiveService.ApiKey.IBMSDK.VisualRecognition.RetryInSeconds" value="1"  />
+
+  <property name="CognitiveService.ApiKey.LexSDK.ApiVersion" value="4.3.2"/>
+  <property name="CognitiveService.ApiKey.LexSDK.AppName" value="SitecoreCognitiveServices"/>
+  <property name="CognitiveService.ApiKey.LexSDK.AuthAppKey" value="cd954253-acaf-4dfa-a417-0a8cfb701f12"/>
+  <property name="CognitiveService.ApiKey.LexSDK.AuthHost" value="https://semantria.com/auth" />
+  <property name="CognitiveService.ApiKey.LexSDK.ConsumerKey" value=""/>
+  <property name="CognitiveService.ApiKey.LexSDK.ConsumerSecret" value=""/>
+  <property name="CognitiveService.ApiKey.LexSDK.DefaultConfiguration" value="" />
+  <property name="CognitiveService.ApiKey.LexSDK.Format" value="json"/>
+  <property name="CognitiveService.ApiKey.LexSDK.Host" value="https://api.semantria.com" />
+  <property name="CognitiveService.ApiKey.LexSDK.Password" value=""/>
+  <property name="CognitiveService.ApiKey.LexSDK.UseCompression" value="false"/>
+  <property name="CognitiveService.ApiKey.LexSDK.Username" value=""/>
+  <property name="CognitiveService.ApiKey.LexSDK.WrapperName" value="dotNet" />
+
+  <property name="CognitiveService.ApiKey.CalaisSDK.Token" value="" />
+
+  <property name="CognitiveService.ApiKey.NexSDK.Endpoint" value="https://ml.nexosis.com/v1/" />
+  <property name="CognitiveService.ApiKey.NexSDK.ClientVersion" value="Nexosis-DotNet-API-Client/1.0" />
+  <property name="CognitiveService.ApiKey.NexSDK.ApiToken" value="" />
+
+  <property name="CognitiveService.ApiKey.BigMLSDK.Endpoint" value="https://bigml.io/" />
+  <property name="CognitiveService.ApiKey.BigMLSDK.ApiKey" value="" />
+  <property name="CognitiveService.ApiKey.BigMLSDK.Username" value="" />
+</project>
