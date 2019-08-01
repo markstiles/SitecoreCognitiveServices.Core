@@ -7,7 +7,7 @@ using System.Web;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Models
 {
-    public interface IRequiredConversationParameter
+    public interface IConversationParameter
     {
         string ParamName { get; set;  }
         string ParamMessage { get; set; }

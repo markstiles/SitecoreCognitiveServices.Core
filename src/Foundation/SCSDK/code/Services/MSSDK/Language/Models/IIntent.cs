@@ -9,7 +9,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
         string KeyName { get; }
         string DisplayName { get; }
         bool RequiresConfirmation { get; }
-        List<IRequiredConversationParameter> ConversationParameters { get; }
+        List<IConversationParameter> ConversationParameters { get; }
         ConversationResponse Respond(LuisResult result, ItemContextParameters parameters, IConversation conversation);
     }
 }

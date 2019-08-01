@@ -100,7 +100,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             }
 
             // check and request all required parameters of a conversation
-            foreach (IRequiredConversationParameter p in conversation.Intent.ConversationParameters)
+            foreach (IConversationParameter p in conversation.Intent.ConversationParameters)
             {
                 var parameterResult = TryGetParam(p, context, conversation, context.Parameters);
                 if (!parameterResult.HasFailed)
@@ -139,7 +139,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <param name="parameters">the context paramters</param>
         /// <param name="GetValidParameter">the method that can retrieve the valid parameters for a valid user input</param>
         /// <returns></returns>
-        public virtual IParameterResult TryGetParam(IRequiredConversationParameter param, IConversationContext context, IConversation c, ItemContextParameters parameters)
+        public virtual IParameterResult TryGetParam(IConversationParameter param, IConversationContext context, IConversation c, ItemContextParameters parameters)
         {
             var storedValue = c.Data.ContainsKey(param.ParamName)
                 ? c.Data[param.ParamName]
@@ -213,7 +213,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <param name="c">the conversation it occurs in</param>
         /// <param name="parameters">context parameters</param>
         /// <returns></returns>
-        public virtual ConversationResponse RequestParam(IRequiredConversationParameter param, IConversation c, ItemContextParameters parameters, string message)
+        public virtual ConversationResponse RequestParam(IConversationParameter param, IConversation c, ItemContextParameters parameters, string message)
         {
             c.Context[ReqParam] = param.ParamName;
 
