@@ -203,7 +203,7 @@
     <Compile Include="Services\MSSDK\Language\Models\ConversationHistory.cs" />
     <Compile Include="Services\MSSDK\Language\Models\ConversationContext.cs" />
     <Compile Include="Services\MSSDK\Language\Models\IConversationContext.cs" />
-    <Compile Include="Services\MSSDK\Language\Models\IRequiredConversationParameter.cs" />
+    <Compile Include="Services\MSSDK\Language\Models\IConversationParameter.cs" />
     <Compile Include="Services\MSSDK\Language\Models\ConversationResponse.cs" />
     <Compile Include="Services\MSSDK\Language\Models\IConversation.cs" />
     <Compile Include="Services\MSSDK\Language\Models\IConversationHistory.cs" />
