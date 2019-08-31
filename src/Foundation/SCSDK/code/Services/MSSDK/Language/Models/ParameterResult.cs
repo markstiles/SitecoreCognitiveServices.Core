@@ -9,13 +9,15 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
     {
         bool HasFailed { get; set; }
         string Error { get; set; }
-        object ReturnValue { get; set; }
+        string DisplayName { get; set; }
+        object DataValue { get; set; }
     }
 
     public class ParameterResult : IParameterResult
     {
         public bool HasFailed { get; set; }
         public string Error { get; set; }
-        public object ReturnValue { get; set; }
+        public string DisplayName { get; set; }
+        public object DataValue { get; set; }
     }
 }

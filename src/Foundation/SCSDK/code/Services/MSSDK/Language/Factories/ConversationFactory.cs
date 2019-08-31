@@ -27,8 +27,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Fac
             var convo = Provider.GetService<IConversation>();
             convo.Result = result;
             convo.Intent = intent;
-            convo.Context = new Dictionary<string, string>();
-            convo.Data = new Dictionary<string, object>();
+            convo.Data = new Dictionary<string, ParameterData>();
 
             return convo;
         }

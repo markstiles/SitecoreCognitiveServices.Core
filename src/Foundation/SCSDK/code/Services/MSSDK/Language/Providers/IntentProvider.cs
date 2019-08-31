@@ -45,6 +45,11 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Pro
                 : null;
         }
 
+        public IIntent GetTopScoringIntent(IConversationContext context)
+        {
+            return GetIntent(context.AppId, context.Result.TopScoringIntent.Intent);
+        }
+
         public ConversationResponse GetDefaultResponse(Guid appId)
         {
             return GetIntent(appId, "none")?.Respond(null, null, null) ?? ConversationResponseFactory.Create();

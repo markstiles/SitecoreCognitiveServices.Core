@@ -9,6 +9,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
         public bool Ended { get; set; }
         public IntentInput Input { get; set; }
         public string Action { get; set; }
-        public Dictionary<string, string> Selections { get; set; }
+        public Dictionary<string, ParameterData> Selections { get; set; }
     }
 }

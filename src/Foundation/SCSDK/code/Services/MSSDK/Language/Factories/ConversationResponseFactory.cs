@@ -14,7 +14,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Fac
         ConversationResponse Create(string intent, string message, bool conversationEnded);
         ConversationResponse Create(string intent, string message, bool conversationEnded, IntentInput options);
         ConversationResponse Create(string intent, string message, bool conversationEnded, string action);
-        ConversationResponse Create(string intent, string message, bool conversationEnded, string action, Dictionary<string, string> selections);
+        ConversationResponse Create(string intent, string message, bool conversationEnded, string action, Dictionary<string, ParameterData> selections);
     }
 
     public class ConversationResponseFactory : IConversationResponseFactory
@@ -65,7 +65,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Fac
             return response;
         }
 
-        public ConversationResponse Create(string intent, string message, bool conversationEnded, string action, Dictionary<string, string> selections)
+        public ConversationResponse Create(string intent, string message, bool conversationEnded, string action, Dictionary<string, ParameterData> selections)
         {
             var response = Create(intent, message, conversationEnded);
             response.Action = action;

@@ -12,7 +12,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
         bool IsConfirmed { get; set; }
         IIntent Intent { get; set; }
         LuisResult Result { get; set; }
-        Dictionary<string, string> Context { get; set; }
-        Dictionary<string, object> Data { get; set; }
+        Dictionary<string, ParameterData> Data { get; set; }
     }
 }

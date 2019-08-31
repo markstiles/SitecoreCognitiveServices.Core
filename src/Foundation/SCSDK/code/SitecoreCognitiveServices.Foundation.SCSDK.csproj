@@ -210,6 +210,7 @@
     <Compile Include="Services\MSSDK\Language\Models\IntentInput.cs" />
     <Compile Include="Services\MSSDK\Language\Models\IIntent.cs" />
     <Compile Include="Services\MSSDK\Language\Models\ItemContextParameters.cs" />
+    <Compile Include="Services\MSSDK\Language\Models\ParameterData.cs" />
     <Compile Include="Services\MSSDK\Language\Models\ParameterResult.cs" />
     <Compile Include="Services\MSSDK\Language\Providers\IIntentProvider.cs" />
     <Compile Include="Services\MSSDK\Language\Providers\IntentProvider.cs" />

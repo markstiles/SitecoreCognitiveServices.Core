@@ -42,16 +42,14 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
 
         #endregion
 
-        public ConversationResponse HandleMessage(IConversationContext context)
+        public virtual ConversationResponse HandleMessage(IConversationContext context)
         {
             if (string.IsNullOrWhiteSpace(context.Result.Query) || context.Result == null)
                 return IntentProvider.GetDefaultResponse(context.AppId);
 
-            IConversation conversation = (ConversationHistory.Conversations.Any())
-                ? ConversationHistory.Conversations.Last()
-                : null;
-        
-            var intent = IntentProvider.GetIntent(context.AppId, context.Result.TopScoringIntent.Intent);
+            // gather data
+            var intent = IntentProvider.GetTopScoringIntent(context);
+            var conversation = GetCurrentConversation(context);
             var isConfident = context.Result.TopScoringIntent.Score > ApiKeys.LuisIntentConfidenceThreshold;
             var hasValidIntent = intent != null && isConfident;
             var inConversation = conversation != null && !conversation.IsEnded;
@@ -59,19 +57,11 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
 
             // if the user is trying to end or finish a conversation 
             if (inConversation && requestedQuit)
-                return EndConversation(conversation, intent, context.AppId);
-            
-            // start a new conversation if not in one
-            if (!inConversation && hasValidIntent)
-            {
-                conversation = ConversationFactory.Create(context.Result, intent);
-                ConversationHistory.Conversations.Add(conversation);
-                inConversation = true;
-            }
+                return EndCurrentConversation(context);
                 
             // continue conversation
             if (inConversation)
-                return HandleConversation(conversation, context);
+                return HandleConversation(context);
             
             // is a user frustrated or is their intention unclear
             var sentimentScore = context.Result.SentimentAnalysis?.score ?? 1;
@@ -79,22 +69,47 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
                 ? IntentProvider.GetIntent(context.AppId, context.FrustratedIntentName)?.Respond(null, null, null) ?? IntentProvider.GetDefaultResponse(context.AppId)
                 : IntentProvider.GetDefaultResponse(context.AppId);
         }
-        
-        public ConversationResponse EndConversation(IConversation conversation, IIntent intent, Guid appId)
-        {
-            conversation.IsEnded = true;
 
-            return intent?.Respond(null, null, null) ?? IntentProvider.GetDefaultResponse(appId);
+        public virtual IConversation GetCurrentConversation(IConversationContext context)
+        {
+            var intent = IntentProvider.GetTopScoringIntent(context);
+            
+            IConversation conversation = null;
+
+            var isConfident = context.Result.TopScoringIntent.Score > ApiKeys.LuisIntentConfidenceThreshold;
+            var hasValidIntent = intent != null && isConfident;
+            
+            if (ConversationHistory.Conversations.Any())
+            {
+                conversation = ConversationHistory.Conversations.Last();
+            }
+
+            var inConversation = conversation != null && !conversation.IsEnded;
+
+            if (!inConversation && hasValidIntent)
+            {
+                conversation = ConversationFactory.Create(context.Result, intent);
+                ConversationHistory.Conversations.Add(conversation);
+            }
+
+            return conversation;
         }
 
-        public ConversationResponse HandleConversation(IConversation conversation, IConversationContext context)
+        public virtual ConversationResponse EndCurrentConversation(IConversationContext context)
         {
+            GetCurrentConversation(context).IsEnded = true;
+
+            return IntentProvider.GetTopScoringIntent(context)?.Respond(null, null, null) ?? IntentProvider.GetDefaultResponse(context.AppId);
+        }
+
+        public virtual ConversationResponse HandleConversation(IConversationContext context)
+        {
+            var conversation = GetCurrentConversation(context);
+
             var clear = $"{context.ClearText} ";
             if (context.Result.Query.StartsWith(clear))
             {
                 var clearParam = context.Result.Query.Replace(clear, "");
-                if (conversation.Context.ContainsKey(clearParam))
-                    conversation.Context.Remove(clearParam);
                 if (conversation.Data.ContainsKey(clearParam))
                     conversation.Data.Remove(clearParam);
             }
@@ -102,7 +117,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             // check and request all required parameters of a conversation
             foreach (IConversationParameter p in conversation.Intent.ConversationParameters)
             {
-                var parameterResult = TryGetParam(p, context, conversation, context.Parameters);
+                var parameterResult = TryGetParam(p, context, conversation);
                 if (!parameterResult.HasFailed)
                     continue;
 
@@ -121,8 +136,8 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             // confirm selected options with user 
             if (conversation.Intent.RequiresConfirmation && !conversation.IsConfirmed)
             {
-                conversation.Data[ReqConfirm] = "confirm";
-                return ConversationResponseFactory.Create(conversation.Intent.KeyName, context.ConfirmText, conversation.IsEnded, "confirm", conversation.Context);
+                conversation.Data[ReqConfirm] = new ParameterData { DisplayName = "confirm" };
+                return ConversationResponseFactory.Create(conversation.Intent.KeyName, context.ConfirmText, conversation.IsEnded, "confirm", conversation.Data);
             }
 
             conversation.IsEnded = true;
@@ -130,6 +145,24 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             return conversation.Intent.Respond(context.Result, context.Parameters, conversation);
         }
         
+        /// <summary>
+        /// Create a response to the user requesting a specific parameter
+        /// </summary>
+        /// <param name="param">the parameter details</param>
+        /// <param name="c">the conversation it occurs in</param>
+        /// <param name="parameters">context parameters</param>
+        /// <returns></returns>
+        public virtual ConversationResponse RequestParam(IConversationParameter param, IConversation c, ItemContextParameters parameters, string message)
+        {
+            c.Data[ReqParam] = new ParameterData { DisplayName = param.ParamName };
+
+            if (string.IsNullOrWhiteSpace(message))
+                message = param.ParamMessage;
+
+            var intentInput = param.GetInput(parameters, c);
+            return ConversationResponseFactory.Create(c.Intent.KeyName, message, c.IsEnded, intentInput);
+        }
+
         /// <summary>
         /// get a valid parameter object by checking for it in the previously retrieved data store or by finding it based on the information provided by the user
         /// </summary>
@@ -139,29 +172,28 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <param name="parameters">the context paramters</param>
         /// <param name="GetValidParameter">the method that can retrieve the valid parameters for a valid user input</param>
         /// <returns></returns>
-        public virtual IParameterResult TryGetParam(IConversationParameter param, IConversationContext context, IConversation c, ItemContextParameters parameters)
+        public virtual IParameterResult TryGetParam(IConversationParameter param, IConversationContext context, IConversation c)
         {
             var storedValue = c.Data.ContainsKey(param.ParamName)
                 ? c.Data[param.ParamName]
                 : null;
 
             if (storedValue != null)
-                return ResultFactory.GetSuccess(storedValue);
+                return ResultFactory.GetSuccess(storedValue.DisplayName, storedValue.Data);
 
             string value = GetUserValue(param.ParamName, context.Result, c);
             if (string.IsNullOrEmpty(value))
                 return ResultFactory.GetFailure();
             
-            var paramResult = param.GetParameter(value, context, parameters, c);
+            var paramResult = param.GetParameter(value, context, context.Parameters, c);
             if (paramResult.HasFailed)
                 return paramResult;
             
             if (IsParamRequest(param.ParamName, c)) // clear any request for this property
-                c.Context.Remove(ReqParam);
-
-            c.Context[param.ParamName] = value;
-            c.Data[param.ParamName] = paramResult.ReturnValue;
-            return ResultFactory.GetSuccess(paramResult.ReturnValue);
+                c.Data.Remove(ReqParam);
+            
+            c.Data[param.ParamName] = new ParameterData { DisplayName = paramResult.DisplayName, Data = paramResult.DataValue };
+            return ResultFactory.GetSuccess(paramResult.DisplayName, paramResult.DataValue);
         }
 
         /// <summary>
@@ -185,8 +217,8 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             if (currentEntity != null) // check the current request entities
                 return currentEntity;
             
-            if (c.Context.ContainsKey(paramName)) // check the context data
-                return c.Context[paramName];
+            if (c.Data.ContainsKey(paramName)) // check the context data
+                return c.Data[paramName].DisplayName;
 
             var initialEntity = c.Result?.Entities?.FirstOrDefault(x => x.Type.Equals(entityType))?.Entity;
             if (initialEntity != null) // check the initial request entities
@@ -203,24 +235,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <returns></returns>
         public virtual bool IsParamRequest(string paramName, IConversation c)
         {
-            return c.Context.ContainsKey(ReqParam) && c.Context[ReqParam].Equals(paramName);
-        }
-
-        /// <summary>
-        /// Create a response to the user requesting a specific parameter
-        /// </summary>
-        /// <param name="param">the parameter details</param>
-        /// <param name="c">the conversation it occurs in</param>
-        /// <param name="parameters">context parameters</param>
-        /// <returns></returns>
-        public virtual ConversationResponse RequestParam(IConversationParameter param, IConversation c, ItemContextParameters parameters, string message)
-        {
-            c.Context[ReqParam] = param.ParamName;
-
-            if (string.IsNullOrWhiteSpace(message))
-                message = param.ParamMessage;
-
-            return ConversationResponseFactory.Create(c.Intent.KeyName, message, c.IsEnded, param.GetInput(parameters, c));
+            return c.Data.ContainsKey(ReqParam) && c.Data[ReqParam].DisplayName.Equals(paramName);
         }
     }
 }

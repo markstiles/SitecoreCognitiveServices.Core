@@ -10,20 +10,21 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Fac
 {
     public interface IParameterResultFactory
     {
-        IParameterResult GetSuccess(object returnValue);
+        IParameterResult GetSuccess(string displayName, object dataValue);
         IParameterResult GetFailure();
         IParameterResult GetFailure(string errorMessage);
     }
 
     public class ParameterResultFactory : IParameterResultFactory
     {
-        public IParameterResult GetSuccess(object returnValue)
+        public IParameterResult GetSuccess(string displayName, object dataValue)
         {
             return new ParameterResult
             {
                 HasFailed = false,
                 Error = "",
-                ReturnValue = returnValue
+                DisplayName = displayName,
+                DataValue = dataValue
             };
         }
 
@@ -38,7 +39,8 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Fac
             {
                 HasFailed = true,
                 Error = errorMessage,
-                ReturnValue = null
+                DisplayName = "",
+                DataValue = null
             };
         }
     }

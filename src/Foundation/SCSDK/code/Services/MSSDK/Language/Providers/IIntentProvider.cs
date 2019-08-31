@@ -10,6 +10,8 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Pro
 
         IIntent GetIntent(Guid appId, string intentName);
 
+        IIntent GetTopScoringIntent(IConversationContext context);
+
         ConversationResponse GetDefaultResponse(Guid appId);
     }
 }
