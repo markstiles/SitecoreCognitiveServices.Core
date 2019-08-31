@@ -131,6 +131,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK {
         public virtual ID MSSDK_FaceEndpointFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.FaceEndpointFieldId"));
         public virtual ID MSSDK_FaceRetryInSecondsFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.FaceRetryInSecondsFieldId"));
         public virtual ID MSSDK_LuisFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.LuisFieldId"));
+        public virtual ID MSSDK_LuisAuthoringFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.LuisAuthoringFieldId"));
         public virtual ID MSSDK_LuisEndpointFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.LuisEndpointFieldId"));
         public virtual ID MSSDK_LuisRetryInSecondsFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.LuisRetryInSecondsFieldId"));
         public virtual ID MSSDK_LuisIntentConfidenceThresholdFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.LuisIntentConfidenceThresholdFieldId"));

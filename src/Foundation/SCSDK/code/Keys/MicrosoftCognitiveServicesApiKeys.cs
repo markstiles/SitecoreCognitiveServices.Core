@@ -57,6 +57,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Keys
         public virtual string FaceEndpoint => KeyItem[Settings.MSSDK_FaceEndpointFieldId];
         public virtual int FaceRetryInSeconds => int.Parse(KeyItem[Settings.MSSDK_FaceRetryInSecondsFieldId]);
         public virtual string Luis => KeyItem[Settings.MSSDK_LuisFieldId];
+        public virtual string LuisAuthoring => KeyItem[Settings.MSSDK_LuisAuthoringFieldId];
         public virtual string LuisEndpoint => KeyItem[Settings.MSSDK_LuisEndpointFieldId];
         public virtual int LuisRetryInSeconds => int.Parse(KeyItem[Settings.MSSDK_LuisRetryInSecondsFieldId]);
         public virtual float LuisIntentConfidenceThreshold

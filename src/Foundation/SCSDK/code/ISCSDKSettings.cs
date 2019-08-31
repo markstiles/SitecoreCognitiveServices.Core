@@ -119,6 +119,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK {
         ID MSSDK_FaceEndpointFieldId { get; }
         ID MSSDK_FaceRetryInSecondsFieldId { get; }
         ID MSSDK_LuisFieldId { get; }
+        ID MSSDK_LuisAuthoringFieldId { get; }
         ID MSSDK_LuisEndpointFieldId { get; }
         ID MSSDK_LuisRetryInSecondsFieldId { get; }
         ID MSSDK_LuisIntentConfidenceThresholdFieldId { get; }
