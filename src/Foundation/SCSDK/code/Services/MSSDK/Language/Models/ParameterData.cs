@@ -8,6 +8,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
     public class ParameterData
     {
         public string DisplayName { get; set; }
-        public object Data { get; set; }
+        public object Value { get; set; }
     }
 }
