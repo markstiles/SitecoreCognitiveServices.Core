@@ -158,3 +158,6 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\admin
+    - ID: "aee5f6d6-5e25-4cec-b512-974df262b489"
+      Hint: Luis Authoring
+      Value: 
