@@ -117,11 +117,22 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             // check and request all required parameters of a conversation
             foreach (IConversationParameter p in conversation.Intent.ConversationParameters)
             {
-                var parameterResult = TryGetParam(p, context, conversation);
+                var vParameter = p as IValidationParameter;
+                if (vParameter != null && !vParameter.IsValid(context, conversation))
+                {
+                    EndCurrentConversation(context);
+                    return ConversationResponseFactory.Create(conversation.Intent.KeyName, p.ParamMessage);
+                }
+
+                var rParam = p as IRequiredParameter;
+                if (rParam == null)
+                    continue;
+
+                var parameterResult = TryGetParam(rParam, context, conversation);
                 if (!parameterResult.HasFailed)
                     continue;
 
-                return RequestParam(p, conversation, context.Parameters, parameterResult.Error);
+                return RequestParam(rParam, conversation, context.Parameters, parameterResult.Error);
             }
 
             // save confirmation
@@ -152,7 +163,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <param name="c">the conversation it occurs in</param>
         /// <param name="parameters">context parameters</param>
         /// <returns></returns>
-        public virtual ConversationResponse RequestParam(IConversationParameter param, IConversation c, ItemContextParameters parameters, string message)
+        public virtual ConversationResponse RequestParam(IRequiredParameter param, IConversation c, ItemContextParameters parameters, string message)
         {
             c.Data[ReqParam] = new ParameterData { DisplayName = param.ParamName };
 
@@ -172,7 +183,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <param name="parameters">the context paramters</param>
         /// <param name="GetValidParameter">the method that can retrieve the valid parameters for a valid user input</param>
         /// <returns></returns>
-        public virtual IParameterResult TryGetParam(IConversationParameter param, IConversationContext context, IConversation c)
+        public virtual IParameterResult TryGetParam(IRequiredParameter param, IConversationContext context, IConversation c)
         {
             var storedValue = c.Data.ContainsKey(param.ParamName)
                 ? c.Data[param.ParamName]
