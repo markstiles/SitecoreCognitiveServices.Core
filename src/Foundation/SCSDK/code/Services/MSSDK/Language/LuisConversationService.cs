@@ -179,7 +179,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
                 : null;
 
             if (storedValue != null)
-                return ResultFactory.GetSuccess(storedValue.DisplayName, storedValue.Data);
+                return ResultFactory.GetSuccess(storedValue.DisplayName, storedValue.Value);
 
             string value = GetUserValue(param.ParamName, context.Result, c);
             if (string.IsNullOrEmpty(value))
@@ -192,7 +192,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             if (IsParamRequest(param.ParamName, c)) // clear any request for this property
                 c.Data.Remove(ReqParam);
             
-            c.Data[param.ParamName] = new ParameterData { DisplayName = paramResult.DisplayName, Data = paramResult.DataValue };
+            c.Data[param.ParamName] = new ParameterData { DisplayName = paramResult.DisplayName, Value = paramResult.DataValue };
             return ResultFactory.GetSuccess(paramResult.DisplayName, paramResult.DataValue);
         }
 
