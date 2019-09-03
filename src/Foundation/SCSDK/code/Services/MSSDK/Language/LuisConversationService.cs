@@ -61,7 +61,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
                 
             // continue conversation
             if (inConversation)
-                return HandleConversation(context);
+                return HandleCurrentConversation(context);
             
             // is a user frustrated or is their intention unclear
             var sentimentScore = context.Result.SentimentAnalysis?.score ?? 1;
@@ -102,7 +102,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             return IntentProvider.GetTopScoringIntent(context)?.Respond(null, null, null) ?? IntentProvider.GetDefaultResponse(context.AppId);
         }
 
-        public virtual ConversationResponse HandleConversation(IConversationContext context)
+        public virtual ConversationResponse HandleCurrentConversation(IConversationContext context)
         {
             var conversation = GetCurrentConversation(context);
 
@@ -128,7 +128,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
                 if (rParam == null)
                     continue;
 
-                var parameterResult = TryGetParam(rParam, context, conversation);
+                var parameterResult = LookupParam(rParam, context, conversation);
                 if (!parameterResult.HasFailed)
                     continue;
 
@@ -183,7 +183,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <param name="parameters">the context paramters</param>
         /// <param name="GetValidParameter">the method that can retrieve the valid parameters for a valid user input</param>
         /// <returns></returns>
-        public virtual IParameterResult TryGetParam(IRequiredParameter param, IConversationContext context, IConversation c)
+        public virtual IParameterResult LookupParam(IRequiredParameter param, IConversationContext context, IConversation c)
         {
             var storedValue = c.Data.ContainsKey(param.ParamName)
                 ? c.Data[param.ParamName]
@@ -192,7 +192,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             if (storedValue != null)
                 return ResultFactory.GetSuccess(storedValue.DisplayName, storedValue.Value);
 
-            string value = GetUserValue(param.ParamName, context.Result, c);
+            string value = LookupUserValue(param.ParamName, context.Result, c);
             if (string.IsNullOrEmpty(value))
                 return ResultFactory.GetFailure();
             
@@ -214,7 +214,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <param name="result">the luis query result that identities the intent and entities</param>
         /// <param name="c">the current conversation</param>
         /// <returns></returns>
-        public virtual string GetUserValue(string paramName, LuisResult result, IConversation c)
+        public virtual string LookupUserValue(string paramName, LuisResult result, IConversation c)
         {
             var paramAlignment = new Dictionary<string, string> {
                 { "Date", "builtin.datetimeV2.datetime" }
