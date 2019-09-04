@@ -99,7 +99,7 @@ SharedFields:
   Hint: Text Analytics Retry In Seconds
   Value: 540
 - ID: "b16bd9a1-1749-4240-b971-673b7742c3ab"
-  Hint: Speech Endpoint
+  Hint: Speech Enpoint
   Value: "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1/"
 - ID: "b4128f27-9669-44e1-9da8-f7a503ab1b92"
   Hint: Q n A Endpoint
