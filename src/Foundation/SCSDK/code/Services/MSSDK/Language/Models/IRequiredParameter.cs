@@ -8,7 +8,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
     public interface IRequiredParameter : IConversationParameter
     {
         string ParamName { get; set; }
-        IParameterResult GetParameter(string paramValue, IConversationContext context, ItemContextParameters parameters, IConversation conversation);
+        IParameterResult GetParameter(string paramValue, IConversationContext context);
         IntentInput GetInput(ItemContextParameters parameters, IConversation conversation);
     }
 }

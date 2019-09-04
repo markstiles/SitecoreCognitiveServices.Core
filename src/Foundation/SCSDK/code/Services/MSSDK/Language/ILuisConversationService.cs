@@ -8,6 +8,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
 {
     public interface ILuisConversationService
     {
-        ConversationResponse HandleMessage(IConversationContext context);
+        ConversationResponse ProcessUserInput(IConversationContext context);
     }
 }

@@ -16,8 +16,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
 
         protected readonly IIntentProvider IntentProvider;
         protected readonly IMicrosoftCognitiveServicesApiKeys ApiKeys;
-        protected readonly IConversationHistory ConversationHistory;
-        protected readonly IConversationFactory ConversationFactory;
         protected readonly IConversationResponseFactory ConversationResponseFactory;
         protected readonly IParameterResultFactory ResultFactory;
 
@@ -27,29 +25,25 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         public LuisConversationService(
             IIntentProvider intentProvider,
             IMicrosoftCognitiveServicesApiKeys apiKeys,
-            IConversationHistory convoHistory,
-            IConversationFactory convoFactory,
             IConversationResponseFactory responseFactory,
             IParameterResultFactory resultFactory)
         {
             IntentProvider = intentProvider;
             ApiKeys = apiKeys;
-            ConversationHistory = convoHistory;
-            ConversationFactory = convoFactory;
             ConversationResponseFactory = responseFactory;
             ResultFactory = resultFactory;
         }
 
         #endregion
 
-        public virtual ConversationResponse HandleMessage(IConversationContext context)
+        public virtual ConversationResponse ProcessUserInput(IConversationContext context)
         {
             if (string.IsNullOrWhiteSpace(context.Result.Query) || context.Result == null)
                 return IntentProvider.GetDefaultResponse(context.AppId);
 
             // gather data
             var intent = IntentProvider.GetTopScoringIntent(context);
-            var conversation = GetCurrentConversation(context);
+            var conversation = context.GetCurrentConversation();
             var isConfident = context.Result.TopScoringIntent.Score > ApiKeys.LuisIntentConfidenceThreshold;
             var hasValidIntent = intent != null && isConfident;
             var inConversation = conversation != null && !conversation.IsEnded;
@@ -69,42 +63,17 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
                 ? IntentProvider.GetIntent(context.AppId, context.FrustratedIntentName)?.Respond(null, null, null) ?? IntentProvider.GetDefaultResponse(context.AppId)
                 : IntentProvider.GetDefaultResponse(context.AppId);
         }
-
-        public virtual IConversation GetCurrentConversation(IConversationContext context)
-        {
-            var intent = IntentProvider.GetTopScoringIntent(context);
-            
-            IConversation conversation = null;
-
-            var isConfident = context.Result.TopScoringIntent.Score > ApiKeys.LuisIntentConfidenceThreshold;
-            var hasValidIntent = intent != null && isConfident;
-            
-            if (ConversationHistory.Conversations.Any())
-            {
-                conversation = ConversationHistory.Conversations.Last();
-            }
-
-            var inConversation = conversation != null && !conversation.IsEnded;
-
-            if (!inConversation && hasValidIntent)
-            {
-                conversation = ConversationFactory.Create(context.Result, intent);
-                ConversationHistory.Conversations.Add(conversation);
-            }
-
-            return conversation;
-        }
-
+        
         public virtual ConversationResponse EndCurrentConversation(IConversationContext context)
         {
-            GetCurrentConversation(context).IsEnded = true;
+            context.GetCurrentConversation().IsEnded = true;
 
             return IntentProvider.GetTopScoringIntent(context)?.Respond(null, null, null) ?? IntentProvider.GetDefaultResponse(context.AppId);
         }
 
         public virtual ConversationResponse HandleCurrentConversation(IConversationContext context)
         {
-            var conversation = GetCurrentConversation(context);
+            var conversation = context.GetCurrentConversation();
 
             var clear = $"{context.ClearText} ";
             if (context.Result.Query.StartsWith(clear))
@@ -118,7 +87,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             foreach (IConversationParameter p in conversation.Intent.ConversationParameters)
             {
                 var vParameter = p as IValidationParameter;
-                if (vParameter != null && !vParameter.IsValid(context, conversation))
+                if (vParameter != null && !vParameter.IsValid(context))
                 {
                     EndCurrentConversation(context);
                     return ConversationResponseFactory.Create(conversation.Intent.KeyName, p.ParamMessage);
@@ -128,7 +97,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
                 if (rParam == null)
                     continue;
 
-                var parameterResult = LookupParam(rParam, context, conversation);
+                var parameterResult = LookupParam(rParam, context);
                 if (!parameterResult.HasFailed)
                     continue;
 
@@ -155,13 +124,14 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
 
             return conversation.Intent.Respond(context.Result, context.Parameters, conversation);
         }
-        
+
         /// <summary>
         /// Create a response to the user requesting a specific parameter
         /// </summary>
         /// <param name="param">the parameter details</param>
         /// <param name="c">the conversation it occurs in</param>
         /// <param name="parameters">context parameters</param>
+        /// <param name="message"></param>
         /// <returns></returns>
         public virtual ConversationResponse RequestParam(IRequiredParameter param, IConversation c, ItemContextParameters parameters, string message)
         {
@@ -178,13 +148,12 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// get a valid parameter object by checking for it in the previously retrieved data store or by finding it based on the information provided by the user
         /// </summary>
         /// <param name="paramName">the parameter to retrieve</param>
-        /// <param name="result">the luis response that provides intent and entity information provided by the user</param>
-        /// <param name="c">the current conversation</param>
-        /// <param name="parameters">the context paramters</param>
-        /// <param name="GetValidParameter">the method that can retrieve the valid parameters for a valid user input</param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public virtual IParameterResult LookupParam(IRequiredParameter param, IConversationContext context, IConversation c)
+        public virtual IParameterResult LookupParam(IRequiredParameter param, IConversationContext context)
         {
+            var c = context.GetCurrentConversation();
+
             var storedValue = c.Data.ContainsKey(param.ParamName)
                 ? c.Data[param.ParamName]
                 : null;
@@ -192,11 +161,11 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             if (storedValue != null)
                 return ResultFactory.GetSuccess(storedValue.DisplayName, storedValue.Value);
 
-            string value = LookupUserValue(param.ParamName, context.Result, c);
+            string value = SearchUserValues(param.ParamName, context);
             if (string.IsNullOrEmpty(value))
                 return ResultFactory.GetFailure();
             
-            var paramResult = param.GetParameter(value, context, context.Parameters, c);
+            var paramResult = param.GetParameter(value, context);
             if (paramResult.HasFailed)
                 return paramResult;
             
@@ -210,21 +179,22 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <summary>
         /// tries to determine a value for the requested parameter from a number of possible locations; current response entities, current response, previously provided information (context), or previously provided entities
         /// </summary>
-        /// <param name="paramName">the parameter to be searching for</param>
-        /// <param name="result">the luis query result that identities the intent and entities</param>
-        /// <param name="c">the current conversation</param>
+        /// <param name="paramName"></param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public virtual string LookupUserValue(string paramName, LuisResult result, IConversation c)
+        public virtual string SearchUserValues(string paramName, IConversationContext context)
         {
+            var c = context.GetCurrentConversation();
+
             var paramAlignment = new Dictionary<string, string> {
                 { "Date", "builtin.datetimeV2.datetime" }
             };
             
             if (IsParamRequest(paramName, c)) // was the user responding to a specific request
-                return result.Query;
+                return context.Result.Query;
 
             var entityType = paramAlignment.ContainsKey(paramName) ? paramAlignment[paramName] : paramName;
-            var currentEntity = result?.Entities?.FirstOrDefault(x => x.Type.Equals(entityType))?.Entity;
+            var currentEntity = context.Result?.Entities?.FirstOrDefault(x => x.Type.Equals(entityType))?.Entity;
             if (currentEntity != null) // check the current request entities
                 return currentEntity;
             

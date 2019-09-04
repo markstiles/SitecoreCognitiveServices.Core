@@ -17,5 +17,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
         string NoIntentName { get; set; }
         string ClearText { get; set; }
         string ConfirmText { get; set; }
+        IConversation GetCurrentConversation();
     }
 }

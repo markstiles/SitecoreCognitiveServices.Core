@@ -7,6 +7,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
 {
     public interface IValidationParameter : IConversationParameter
     {
-        bool IsValid(IConversationContext context, IConversation conversation);
+        bool IsValid(IConversationContext context);
     }
 }
