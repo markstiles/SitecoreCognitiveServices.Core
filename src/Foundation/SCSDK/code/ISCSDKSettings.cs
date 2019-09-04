@@ -46,7 +46,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK {
         ID IBMSDK_MachineLearningUsernameFieldId { get; }
         ID IBMSDK_MachineLearningPasswordFieldId { get; }
         ID IBMSDK_MachineLearningRetryInSecondsFieldId { get; }
-        ID IBMSDK_NaturalLanguageClassifierFieldId { get; }
         ID IBMSDK_NaturalLanguageClassifierEndpointFieldId { get; }
         ID IBMSDK_NaturalLanguageClassifierUsernameFieldId { get; }
         ID IBMSDK_NaturalLanguageClassifierPasswordFieldId { get; }

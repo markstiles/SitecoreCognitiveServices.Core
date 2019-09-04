@@ -11,11 +11,11 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK {
         public virtual string CoreDatabase => Settings.GetSetting("CognitiveService.CoreDatabase");
         public virtual string MasterDatabase => Settings.GetSetting("CognitiveService.MasterDatabase");
         public virtual string WebDatabase => Settings.GetSetting("CognitiveService.WebDatabase");
-        public virtual ID BigMLSDKId => new ID(Settings.GetSetting(""));
+        public virtual ID BigMLSDKId => new ID(Settings.GetSetting("CognitiveService.BigMLSDK.ID"));
         public virtual ID IBMSDKId => new ID(Settings.GetSetting("CognitiveService.IBMSDK.ID"));
-        public virtual ID LexSDKId => new ID(Settings.GetSetting("CognitiveServcie.LexSDK.ID"));
+        public virtual ID LexSDKId => new ID(Settings.GetSetting("CognitiveService.LexSDK.ID"));
         public virtual ID MSSDKId => new ID(Settings.GetSetting("CognitiveService.MSSDK.ID"));
-        public virtual ID NexSDKId => new ID(Settings.GetSetting("CognitiveServcie.NexSDK.ID"));
+        public virtual ID NexSDKId => new ID(Settings.GetSetting("CognitiveService.NexSDK.ID"));
         public virtual bool CatchAndReleaseExceptions
         {
             get
@@ -58,7 +58,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK {
         public virtual ID IBMSDK_MachineLearningUsernameFieldId => new ID(Settings.GetSetting("CognitiveService.IBMSDK.MachineLearningUsernameFieldId"));
         public virtual ID IBMSDK_MachineLearningPasswordFieldId => new ID(Settings.GetSetting("CognitiveService.IBMSDK.MachineLearningPasswordFieldId"));
         public virtual ID IBMSDK_MachineLearningRetryInSecondsFieldId => new ID(Settings.GetSetting("CognitiveService.IBMSDK.MachineLearningRetryInSecondsFieldId"));
-        public virtual ID IBMSDK_NaturalLanguageClassifierFieldId => new ID(Settings.GetSetting("CognitiveService.IBMSDK.NaturalLanguageClassifierFieldId"));
         public virtual ID IBMSDK_NaturalLanguageClassifierEndpointFieldId => new ID(Settings.GetSetting("CognitiveService.IBMSDK.NaturalLanguageClassifierEndpointFieldId"));
         public virtual ID IBMSDK_NaturalLanguageClassifierUsernameFieldId => new ID(Settings.GetSetting("CognitiveService.IBMSDK.NaturalLanguageClassifierUsernameFieldId"));
         public virtual ID IBMSDK_NaturalLanguageClassifierPasswordFieldId => new ID(Settings.GetSetting("CognitiveService.IBMSDK.NaturalLanguageClassifierPasswordFieldId"));

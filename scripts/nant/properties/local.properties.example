@@ -54,6 +54,7 @@ and running. There are additional default properties from dev.properties that yo
   <property name="CognitiveService.ApiKey.MSSDK.Face.Endpoint" value="https://eastus2.api.cognitive.microsoft.com/face/v1.0/" />
   <property name="CognitiveService.ApiKey.MSSDK.Face.RetryInSeconds" value="60" />
   <property name="CognitiveService.ApiKey.MSSDK.Luis" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.LuisAuthoring" value="" />
   <property name="CognitiveService.ApiKey.MSSDK.Luis.Endpoint" value="https://westus.api.cognitive.microsoft.com/luis/" />
   <property name="CognitiveService.ApiKey.MSSDK.Luis.RetryInSeconds" value="1" />
   <property name="CognitiveService.ApiKey.MSSDK.QnA" value="" />
