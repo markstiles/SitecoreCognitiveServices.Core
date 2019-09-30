@@ -10,6 +10,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
     public interface IComputerVisionService
     {
         List<string> ValidateVisionImage(MediaItem image);
+        List<string> ValidateVisionImage(MediaItem image, int newHeight, int newWidth);
         Adult GetAdultAnalysis(string imageUrl);
         Adult GetAdultAnalysis(Stream imageStream);
         Category[] GetCategoryAnalysis(string imageUrl);

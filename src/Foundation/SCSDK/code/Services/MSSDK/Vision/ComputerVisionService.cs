@@ -41,6 +41,11 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
 
         public List<string> ValidateVisionImage(MediaItem image)
         {
+            return ValidateVisionImage(image, -1, -1);
+        }
+
+        public List<string> ValidateVisionImage(MediaItem image, int newHeight, int newWidth)
+        {
             List<string> validationErrors = new List<string>();
             List<string> validExtensions = new List<string> { "jpg", "jpeg", "png", "gif", "bmp" };
             
@@ -51,6 +56,10 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Vision
             //Image dimensions must be at least 50 x 50.
             var height = MediaWrapper.GetImageHeight(image);
             var width = MediaWrapper.GetImageWidth(image);
+            
+            if (newHeight > height || newWidth > width)
+                validationErrors.Add("New dimensions must at be smaller than the original dimensions.");
+
             if (height < 50 || width < 50)
                 validationErrors.Add("Vision API images must at least be 50px in height and width.");
 
