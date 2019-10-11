@@ -9,6 +9,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
 {
     public interface IConversationParameter
     {
-        string ParamMessage { get; set; }
+        string GetParamMessage(IConversation conversation);
     }
 }

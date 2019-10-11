@@ -31,6 +31,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
         Item GetItemById(ID itemId, string database);
         Item GetItemByPath(string itemPath, string database);
         Item CreateItem(ID parentId, ID templateId, string dbName, string itemName, Dictionary<ID, string> fieldNameValues);
+        Item CreateItemFromBranch(ID parentId, ID branchId, string dbName, string itemName, Dictionary<ID, string> fieldNameValues);
         void UpdateFields(Item item, Dictionary<ID, string> fieldNameValues);
         void UpdateItemName(Item item, string newName);
         bool RemoveItem(string dbName, ID itemId);
@@ -127,6 +128,26 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Wrappers
 
             var validName = ItemUtil.ProposeValidItemName(itemName);
             Item newItem = folder.Add(validName, (TemplateItem)templateItem);
+            if (newItem == null)
+                return newItem;
+
+            UpdateFields(newItem, fieldNameValues);
+
+            return newItem;
+        }
+
+        public virtual Item CreateItemFromBranch(ID parentId, ID branchId, string dbName, string itemName, Dictionary<ID, string> fieldNameValues)
+        {
+            var folder = GetItemById(parentId, dbName);
+            if (folder == null)
+                return null;
+
+            Item branchItem = GetItemById(branchId, dbName);
+            if (branchItem == null)
+                return null;
+
+            var validName = ItemUtil.ProposeValidItemName(itemName);
+            Item newItem = folder.Add(validName, (BranchItem)branchItem);
             if (newItem == null)
                 return newItem;
 

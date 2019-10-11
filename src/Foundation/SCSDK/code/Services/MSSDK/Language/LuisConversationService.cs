@@ -83,14 +83,14 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
                     conversation.Data.Remove(clearParam);
             }
 
-            // check and request all required parameters of a conversation
+            // check and request all parameters of a conversation
             foreach (IConversationParameter p in conversation.Intent.ConversationParameters)
             {
                 var vParameter = p as IValidationParameter;
                 if (vParameter != null && !vParameter.IsValid(context))
                 {
                     EndCurrentConversation(context);
-                    return ConversationResponseFactory.Create(conversation.Intent.KeyName, p.ParamMessage);
+                    return ConversationResponseFactory.Create(conversation.Intent.KeyName, p.GetParamMessage(conversation));
                 }
 
                 var rParam = p as IRequiredParameter;
@@ -138,7 +138,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             c.Data[ReqParam] = new ParameterData { DisplayName = param.ParamName };
 
             if (string.IsNullOrWhiteSpace(message))
-                message = param.ParamMessage;
+                message = param.GetParamMessage(c);
 
             var intentInput = param.GetInput(parameters, c);
             return ConversationResponseFactory.Create(c.Intent.KeyName, message, c.IsEnded, intentInput);
