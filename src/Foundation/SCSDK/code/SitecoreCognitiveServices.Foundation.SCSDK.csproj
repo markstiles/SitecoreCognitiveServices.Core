@@ -209,7 +209,7 @@
     <Compile Include="Services\MSSDK\Language\Models\IConversationHistory.cs" />
     <Compile Include="Services\MSSDK\Language\Models\IntentInput.cs" />
     <Compile Include="Services\MSSDK\Language\Models\IIntent.cs" />
-    <Compile Include="Services\MSSDK\Language\Models\IRequiredParameter.cs" />
+    <Compile Include="Services\MSSDK\Language\Models\IFieldParameter.cs" />
     <Compile Include="Services\MSSDK\Language\Models\ItemContextParameters.cs" />
     <Compile Include="Services\MSSDK\Language\Models\IValidationParameter.cs" />
     <Compile Include="Services\MSSDK\Language\Models\ParameterData.cs" />

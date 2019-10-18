@@ -83,27 +83,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
                     conversation.Data.Remove(clearParam);
             }
 
-            // check and request all parameters of a conversation
-            foreach (IConversationParameter p in conversation.Intent.ConversationParameters)
-            {
-                var vParameter = p as IValidationParameter;
-                if (vParameter != null && !vParameter.IsValid(context))
-                {
-                    EndCurrentConversation(context);
-                    return ConversationResponseFactory.Create(conversation.Intent.KeyName, p.GetParamMessage(conversation));
-                }
-
-                var rParam = p as IRequiredParameter;
-                if (rParam == null)
-                    continue;
-
-                var parameterResult = LookupParam(rParam, context);
-                if (!parameterResult.HasFailed)
-                    continue;
-
-                return RequestParam(rParam, conversation, context.Parameters, parameterResult.Error);
-            }
-
             // save confirmation
             if (conversation.Intent.RequiresConfirmation
                 && conversation.Data.ContainsKey(ReqConfirm)
@@ -111,8 +90,46 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
             {
                 conversation.IsConfirmed = true;
                 conversation.Data.Remove(ReqConfirm);
-            }                
+            }
 
+            // check and request all parameters of a conversation
+            foreach (IConversationParameter p in conversation.Intent.ConversationParameters)
+            {
+                var vParameter = p as IValidationParameter;
+                if (vParameter != null && !vParameter.IsValid(context))
+                {
+                    context.GetCurrentConversation().IsEnded = true;
+                    return ConversationResponseFactory.Create(conversation.Intent.KeyName, vParameter.GetErrorMessage());
+                }
+
+                var rParam = p as IFieldParameter;
+                if (rParam == null)
+                    continue;
+
+                var parameterResult = LookupParam(rParam, context);
+                if (!parameterResult.HasFailed)
+                    continue;
+                
+                var isYesIntent = context.Result.TopScoringIntent.Intent.Equals(context.YesIntentName, StringComparison.InvariantCultureIgnoreCase);
+                var isNoIntent = context.Result.TopScoringIntent.Intent.Equals(context.NoIntentName, StringComparison.InvariantCultureIgnoreCase);
+
+                //if response to first request is no then return 
+                if (rParam.IsOptional && !conversation.Data.ContainsKey(rParam.ParamName))
+                {
+                    if (!isNoIntent && !isYesIntent)
+                        return ConversationResponseFactory.Create(conversation.Intent.KeyName, $"Do you want to select a {rParam.ParamName}?", conversation.IsEnded, "yesorno");
+                    
+                    if (isNoIntent)
+                    {
+                        conversation.Data[rParam.ParamName] = new ParameterData { Value = "" };
+                        context.Result.TopScoringIntent.Intent = "";
+                        continue;
+                    }                                           
+                }
+
+                return RequestParam(rParam, context, parameterResult.Error);
+            }
+            
             // confirm selected options with user 
             if (conversation.Intent.RequiresConfirmation && !conversation.IsConfirmed)
             {
@@ -133,14 +150,15 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <param name="parameters">context parameters</param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public virtual ConversationResponse RequestParam(IRequiredParameter param, IConversation c, ItemContextParameters parameters, string message)
+        public virtual ConversationResponse RequestParam(IFieldParameter param, IConversationContext context, string message)
         {
+            var c = context.GetCurrentConversation();
             c.Data[ReqParam] = new ParameterData { DisplayName = param.ParamName };
 
             if (string.IsNullOrWhiteSpace(message))
-                message = param.GetParamMessage(c);
+                message = param.GetParameter("", context).Error;
 
-            var intentInput = param.GetInput(parameters, c);
+            var intentInput = param.GetInput(context.Parameters, c);
             return ConversationResponseFactory.Create(c.Intent.KeyName, message, c.IsEnded, intentInput);
         }
 
@@ -150,7 +168,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
         /// <param name="paramName">the parameter to retrieve</param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public virtual IParameterResult LookupParam(IRequiredParameter param, IConversationContext context)
+        public virtual IParameterResult LookupParam(IFieldParameter param, IConversationContext context)
         {
             var c = context.GetCurrentConversation();
 
