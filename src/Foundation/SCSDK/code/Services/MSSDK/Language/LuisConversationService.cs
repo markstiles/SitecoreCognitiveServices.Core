@@ -176,7 +176,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language
                 ? c.Data[param.ParamName]
                 : null;
 
-            if (storedValue != null)
+            if (storedValue != null && !storedValue.IsIncomplete)
                 return ResultFactory.GetSuccess(storedValue.DisplayName, storedValue.Value);
 
             string value = SearchUserValues(param.ParamName, context);

@@ -9,5 +9,6 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
     {
         public string DisplayName { get; set; }
         public object Value { get; set; }
+        public bool IsIncomplete { get; set; }
     }
 }
