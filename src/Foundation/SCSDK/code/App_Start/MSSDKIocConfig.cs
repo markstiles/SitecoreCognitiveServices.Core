@@ -18,6 +18,8 @@ using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Bing;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Factories;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Models;
 using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Providers;
+using SitecoreCognitiveServices.Foundation.MSSDK.Decision;
+using SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Decision;
 
 namespace SitecoreCognitiveServices.Foundation.SCSDK
 {
@@ -46,7 +48,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK
             serviceCollection.AddTransient<INewsSearchRepository, NewsSearchRepository>();
             serviceCollection.AddTransient<IVideoSearchRepository, VideoSearchRepository>();
             serviceCollection.AddTransient<IAcademicSearchRepository, AcademicSearchRepository>();
-            serviceCollection.AddTransient<IRecommendationsRepository, RecommendationsRepository>();
+            serviceCollection.AddTransient<IPersonalizerRepository, PersonalizerRepository>();
             serviceCollection.AddTransient<IContentModeratorRepository, ContentModeratorRepository>();
             serviceCollection.AddTransient<ILuisRepository, LuisRepository>();
             serviceCollection.AddTransient<ISpeechRepository, SpeechRepository>();
@@ -67,7 +69,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK
             serviceCollection.AddTransient<INewsSearchService, NewsSearchService>();
             serviceCollection.AddTransient<IVideoSearchService, VideoSearchService>();
             serviceCollection.AddTransient<IAcademicSearchService, AcademicSearchService>();
-            serviceCollection.AddTransient<IRecommendationsService, RecommendationsService>();
+            serviceCollection.AddTransient<IPersonalizerService, PersonalizerService>();
             serviceCollection.AddTransient<IContentModeratorService, ContentModeratorService>();
             serviceCollection.AddTransient<ILuisService, LuisService>();
             serviceCollection.AddTransient<ISpeechService, SpeechService>();

@@ -191,6 +191,8 @@
     <Compile Include="Services\LexSDK\ISentimentPhraseService.cs" />
     <Compile Include="Services\LexSDK\IDocumentService.cs" />
     <Compile Include="Services\LexSDK\DocumentService.cs" />
+    <Compile Include="Services\MSSDK\Decision\IPersonalizerService.cs" />
+    <Compile Include="Services\MSSDK\Decision\PersonalizerService.cs" />
     <Compile Include="Services\MSSDK\Language\Enums\IntentInputType.cs" />
     <Compile Include="Services\MSSDK\Language\Factories\ConversationContextFactory.cs" />
     <Compile Include="Services\MSSDK\Language\Factories\ParameterResultFactory.cs" />
@@ -264,8 +266,6 @@
     <Compile Include="Services\MSSDK\Knowledge\IAcademicSearchService.cs" />
     <Compile Include="Services\MSSDK\Knowledge\IQnAMakerService.cs" />
     <Compile Include="Services\MSSDK\Knowledge\QnAMakerService.cs" />
-    <Compile Include="Services\MSSDK\Knowledge\RecommendationsService.cs" />
-    <Compile Include="Services\MSSDK\Knowledge\IRecommendationsService.cs" />
     <Compile Include="Services\MSSDK\Language\ILuisService.cs" />
     <Compile Include="Services\MSSDK\Language\LuisService.cs" />
     <Compile Include="Wrappers\PublishWrapper.cs" />

@@ -43,12 +43,12 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Tests
             _keys.Luis.Returns(ConfigurationManager.AppSettings.Get("MSSDK.Luis"));
             _keys.LuisEndpoint.Returns(ConfigurationManager.AppSettings.Get("MSSDK.LuisEndpoint"));
             _keys.LuisRetryInSeconds.Returns(Int32.Parse(ConfigurationManager.AppSettings.Get("MSSDK.LuisRetryInSeconds")));
+            _keys.Personalizer.Returns(ConfigurationManager.AppSettings.Get("MSSDK.Personalizer"));
+            _keys.PersonalizerEndpoint.Returns(ConfigurationManager.AppSettings.Get("MSSDK.PersonalizerEndpoint"));
+            _keys.PersonalizerRetryInSeconds.Returns(Int32.Parse(ConfigurationManager.AppSettings.Get("MSSDK.PersonalizerRetryInSeconds")));
             _keys.QnA.Returns(ConfigurationManager.AppSettings.Get("MSSDK.QnA"));
             _keys.QnAEndpoint.Returns(ConfigurationManager.AppSettings.Get("MSSDK.QnAEndpoint"));
             _keys.QnARetryInSeconds.Returns(Int32.Parse(ConfigurationManager.AppSettings.Get("MSSDK.QnARetryInSeconds")));
-            _keys.Recommendations.Returns(ConfigurationManager.AppSettings.Get("MSSDK.Recommendations"));
-            _keys.RecommendationsEndpoint.Returns(ConfigurationManager.AppSettings.Get("MSSDK.RecommendationsEndpoint"));
-            _keys.RecommendationsRetryInSeconds.Returns(Int32.Parse(ConfigurationManager.AppSettings.Get("MSSDK.RecommendationsRetryInSeconds")));
             _keys.SpeakerRecognition.Returns(ConfigurationManager.AppSettings.Get("MSSDK.SpeakerRecognition"));
             _keys.SpeakerRecognitionEndpoint.Returns(ConfigurationManager.AppSettings.Get("MSSDK.SpeakerRecognitionEndpoint"));
             _keys.SpeakerRecognitionRetryInSeconds.Returns(Int32.Parse(ConfigurationManager.AppSettings.Get("MSSDK.SpeakerRecognitionRetryInSeconds")));

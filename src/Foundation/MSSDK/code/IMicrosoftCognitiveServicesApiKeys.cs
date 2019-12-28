@@ -34,12 +34,12 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK
         string LuisEndpoint { get; }
         int LuisRetryInSeconds { get; }
         float LuisIntentConfidenceThreshold { get; }
+        string Personalizer { get; }
+        string PersonalizerEndpoint { get; }
+        int PersonalizerRetryInSeconds { get; }
         string QnA { get; }
         string QnAEndpoint { get; }
         int QnARetryInSeconds { get; }
-        string Recommendations { get; }
-        string RecommendationsEndpoint { get; }
-        int RecommendationsRetryInSeconds { get; }
         string SpeakerRecognition { get; }
         string SpeakerRecognitionEndpoint { get; }
         int SpeakerRecognitionRetryInSeconds { get; }

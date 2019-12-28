@@ -1,8 +1,8 @@
 ﻿---
-ID: "31f58232-aaac-440a-9292-fcdf17a69ce2"
-Parent: "6e05be53-63d2-417f-9e1d-7249e4ffd1e8"
+ID: "5c597575-d810-4e45-b835-ccf99f90b551"
+Parent: "4c7d2665-5b40-4ab2-b3d8-d76568b534f3"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Luis/Luis Intent Confidence Threshold
+Path: /sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Personalizer/Personalizer Endpoint
 DB: master
 SharedFields:
 - ID: "39847666-389d-409b-95bd-f2016f11eed5"
@@ -14,7 +14,7 @@ SharedFields:
   Value: "Single-Line Text"
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 400
+  Value: 200
 - ID: "be351a73-fcb0-4213-93fa-c302d8ab4f51"
   Hint: Shared
   Type: Checkbox
@@ -26,4 +26,4 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190425T183929Z
+      Value: 20191228T194200Z

@@ -134,12 +134,12 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK {
         public virtual ID MSSDK_LuisEndpointFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.LuisEndpointFieldId"));
         public virtual ID MSSDK_LuisRetryInSecondsFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.LuisRetryInSecondsFieldId"));
         public virtual ID MSSDK_LuisIntentConfidenceThresholdFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.LuisIntentConfidenceThresholdFieldId"));
+        public virtual ID MSSDK_PersonalizerFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.PersonalizerFieldId"));
+        public virtual ID MSSDK_PersonalizerEndpointFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.PersonalizerEndpointFieldId"));
+        public virtual ID MSSDK_PersonalizerRetryInSecondsFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.PersonalizerRetryInSecondsFieldId"));
         public virtual ID MSSDK_QnAFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.QnAFieldId"));
         public virtual ID MSSDK_QnAEndpointFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.QnAEndpointFieldId"));
         public virtual ID MSSDK_QnARetryInSecondsFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.QnARetryInSecondsFieldId"));
-        public virtual ID MSSDK_RecommendationsFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.RecommendationsFieldId"));
-        public virtual ID MSSDK_RecommendationsEndpointFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.RecommendationsEndpointFieldId"));
-        public virtual ID MSSDK_RecommendationsRetryInSecondsFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.RecommendationsRetryInSecondsFieldId"));
         public virtual ID MSSDK_SpeakerRecognitionFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.SpeakerRecognitionFieldId"));
         public virtual ID MSSDK_SpeakerRecognitionEndpointFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.SpeakerRecognitionEndpointFieldId"));
         public virtual ID MSSDK_SpeakerRecognitionRetryInSecondsFieldId => new ID(Settings.GetSetting("CognitiveService.MSSDK.SpeakerRecognitionRetryInSecondsFieldId"));

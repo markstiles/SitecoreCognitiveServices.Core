@@ -224,10 +224,6 @@
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Q n A/Q n A Endpoint/{B4128F27-9669-44E1-9DA8-F7A503AB1B92}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Q n A/Q n A Retry In Seconds/{6ACBFBB7-11A8-4AA5-BF27-D37BF3E5311B}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Q n A/Q n A/{0585E379-D2AD-43E3-96C3-48102524F0FC}/invariant/0</x-item>
-        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Recommendations/{F0F7A54A-97D0-4CF9-8BA0-D5A70D35087A}/invariant/0</x-item>
-        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Recommendations/Recommendations Endpoint/{3F4382F3-F4CE-418A-BA84-F5A1C897F037}/invariant/0</x-item>
-        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Recommendations/Recommendations Retry In Seconds/{73E90D65-9402-4242-9040-DE777B5AADC2}/invariant/0</x-item>
-        <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Recommendations/Recommendations/{E0562F48-1AFA-42A2-86A6-1AA99B369EC6}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Speaker Recognition/{6D1D4E04-35B0-4ED5-A50C-9F6201382DF4}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Speaker Recognition/Speaker Recognition Endpoint/{0367E70A-0DA5-44CC-8B3D-C1AD46E29235}/invariant/0</x-item>
         <x-item>/master/sitecore/templates/Sitecore Cognitive Services/Foundation/SCSDK/APIs/MSSDK/Speaker Recognition/Speaker Recognition Retry In Seconds/{B8BBF469-0D09-4957-BE69-856028DE28AB}/invariant/0</x-item>

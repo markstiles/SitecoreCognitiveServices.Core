@@ -57,12 +57,12 @@ and running. There are additional default properties from dev.properties that yo
   <property name="CognitiveService.ApiKey.MSSDK.LuisAuthoring" value="" />
   <property name="CognitiveService.ApiKey.MSSDK.Luis.Endpoint" value="https://westus.api.cognitive.microsoft.com/luis/" />
   <property name="CognitiveService.ApiKey.MSSDK.Luis.RetryInSeconds" value="1" />
+  <property name="CognitiveService.ApiKey.MSSDK.Personalizer" value="" />
+  <property name="CognitiveService.ApiKey.MSSDK.Personalizer.Endpoint" value="https://eastus.api.cognitive.microsoft.com/personalizer/v1.0/" />
+  <property name="CognitiveService.ApiKey.MSSDK.Personalizer.RetryInSeconds" value="1" />
   <property name="CognitiveService.ApiKey.MSSDK.QnA" value="" />
   <property name="CognitiveService.ApiKey.MSSDK.QnA.Endpoint" value="https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/" />
   <property name="CognitiveService.ApiKey.MSSDK.QnA.RetryInSeconds" value="1" />
-  <property name="CognitiveService.ApiKey.MSSDK.Recommendations" value="" />
-  <property name="CognitiveService.ApiKey.MSSDK.Recommendations.Endpoint" value="https://westus.api.cognitive.microsoft.com/recommendations/v4.0/" />
-  <property name="CognitiveService.ApiKey.MSSDK.Recommendations.RetryInSeconds" value="300" />
   <property name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition" value="" />
   <property name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition.Endpoint" value="https://westus.api.cognitive.microsoft.com/spid/v1.0/" />
   <property name="CognitiveService.ApiKey.MSSDK.SpeakerRecognition.RetryInSeconds" value="3" />

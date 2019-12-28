@@ -50,9 +50,6 @@ SharedFields:
 - ID: "3eba4a15-b69a-4abf-9990-786787f9d083"
   Hint: Academic Endpoint
   Value: "https://westus.api.cognitive.microsoft.com/academic/v1.0/"
-- ID: "3f4382f3-f4ce-418a-ba84-f5a1c897f037"
-  Hint: Recommendations Endpoint
-  Value: "https://westus.api.cognitive.microsoft.com/recommendations/v4.0/"
 - ID: "48b97c2c-f601-4d2a-b97b-f36e19b8e182"
   Hint: Content Moderator Retry In Seconds
   Value: 0
@@ -74,9 +71,6 @@ SharedFields:
 - ID: "6b7cbcd9-09f6-4bb8-a0f2-8e6d5204f088"
   Hint: Computer Vision Retry In Seconds
   Value: 45
-- ID: "73e90d65-9402-4242-9040-de777b5aadc2"
-  Hint: Recommendations Retry In Seconds
-  Value: 300
 - ID: "7542bda3-15b0-464a-9013-cd2a5d4001f8"
   Hint: Bing Spell Check
   Value: 
@@ -98,8 +92,11 @@ SharedFields:
 - ID: "97b271e6-d3e9-42de-9be7-f1b789ab2e3e"
   Hint: Text Analytics Retry In Seconds
   Value: 540
+- ID: "aee5f6d6-5e25-4cec-b512-974df262b489"
+  Hint: Luis Authoring
+  Value: 
 - ID: "b16bd9a1-1749-4240-b971-673b7742c3ab"
-  Hint: Speech Enpoint
+  Hint: Speech Endpoint
   Value: "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1/"
 - ID: "b4128f27-9669-44e1-9da8-f7a503ab1b92"
   Hint: Q n A Endpoint
@@ -122,12 +119,12 @@ SharedFields:
 - ID: "d3a017fc-e32f-4636-bc87-fba7ea5eaa92"
   Hint: Entity Linking Retry In Seconds
   Value: 1
-- ID: "e0562f48-1afa-42a2-86a6-1aa99b369ec6"
-  Hint: Recommendations
-  Value: 
 - ID: "e0c4f635-daf8-4d1a-88d1-6d0e10446e88"
   Hint: Academic Retry In Seconds
   Value: 1
+- ID: "e165ebd9-70fe-4087-92f8-7897c917f0d2"
+  Hint: Personalizer
+  Value: 
 - ID: "e5202d27-3e41-492d-958c-192d201fb15a"
   Hint: Luis Endpoint
   Value: "https://westus.api.cognitive.microsoft.com/luis/"
@@ -158,6 +155,3 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\admin
-    - ID: "aee5f6d6-5e25-4cec-b512-974df262b489"
-      Hint: Luis Authoring
-      Value: 
