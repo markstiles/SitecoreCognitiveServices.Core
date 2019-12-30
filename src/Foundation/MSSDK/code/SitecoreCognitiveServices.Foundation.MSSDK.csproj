@@ -411,10 +411,8 @@
     <Compile Include="Decision\PersonalizerRepository.cs" />
     <Compile Include="Language\ILuisRepository.cs" />
     <Compile Include="Language\ITextAnalyticsRepository.cs" />
-    <Compile Include="Language\ITranslatorRepository.cs" />
     <Compile Include="Language\LuisRepository.cs" />
     <Compile Include="Language\TextAnalyticsRepository.cs" />
-    <Compile Include="Language\TranslatorRepository.cs" />
     <Compile Include="Http\MicrosoftCognitiveServicesRepositoryClient.cs" />
     <Compile Include="Speech\ICustomSpeechRepository.cs" />
     <Compile Include="Speech\ISpeakerIdentificationRepository.cs" />
