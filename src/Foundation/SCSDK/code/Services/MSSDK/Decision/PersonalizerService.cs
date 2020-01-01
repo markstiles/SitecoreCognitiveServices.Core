@@ -169,7 +169,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Decision
                    null);
         }
 
-        public Service UpdateServiceConfiguration(Service config)
+        public AzureService UpdateServiceConfiguration(AzureService config)
         {
             return PolicyService.ExecuteRetryAndCapture400Errors(
                    "PersonalizerService.UpdateServiceConfiguration",
@@ -238,7 +238,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Decision
                    null);
         }
 
-        public Service GetServiceConfiguration()
+        public AzureService GetServiceConfiguration()
         {
             return PolicyService.ExecuteRetryAndCapture400Errors(
                    "PersonalizerService.GetServiceConfiguration",

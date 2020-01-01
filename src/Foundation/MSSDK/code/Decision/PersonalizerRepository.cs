@@ -92,11 +92,11 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision
             return JsonConvert.DeserializeObject<Policy>(response);
         }
 
-        public Service UpdateServiceConfiguration(Service config)
+        public AzureService UpdateServiceConfiguration(AzureService config)
         {
             var response = RepositoryClient.SendJsonPut(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}configurations/service", JsonConvert.SerializeObject(config));
 
-            return JsonConvert.DeserializeObject<Service>(response);
+            return JsonConvert.DeserializeObject<AzureService>(response);
         }
 
         #endregion Update
@@ -131,11 +131,11 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision
             return JsonConvert.DeserializeObject<Policy>(response);
         }
 
-        public Service GetServiceConfiguration()
+        public AzureService GetServiceConfiguration()
         {
             var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}configurations/service");
 
-            return JsonConvert.DeserializeObject<Service>(response);
+            return JsonConvert.DeserializeObject<AzureService>(response);
         }
 
         public LogsProperties GetLogsProperties()

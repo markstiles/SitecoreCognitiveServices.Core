@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision.Models.Personalizer
 {
-    public class Service
+    public class AzureService
     {
         public string rewardWaitTime { get; set; }
         public int defaultReward { get; set; }

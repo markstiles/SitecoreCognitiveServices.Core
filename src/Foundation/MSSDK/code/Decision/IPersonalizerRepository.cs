@@ -17,12 +17,12 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision
         void DeleteLogs();
         void DeleteModel();
         Policy UpdatePolicyConfiguration(Policy policy);
-        Service UpdateServiceConfiguration(Service config);
+        AzureService UpdateServiceConfiguration(AzureService config);
         byte[] GetCurrentModel();
         ModelProperties GetModelProperties();
         Evaluation GetEvaluation(string evaluationId);
         Policy GetPolicyConfiguration();
-        Service GetServiceConfiguration();
+        AzureService GetServiceConfiguration();
         LogsProperties GetLogsProperties();
         List<Evaluation> GetEvaluations();
         Status GetStatus();
