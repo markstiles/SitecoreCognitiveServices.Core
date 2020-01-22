@@ -122,12 +122,12 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK {
         ID MSSDK_LuisEndpointFieldId { get; }
         ID MSSDK_LuisRetryInSecondsFieldId { get; }
         ID MSSDK_LuisIntentConfidenceThresholdFieldId { get; }
+        ID MSSDK_PersonalizerFieldId { get; }
+        ID MSSDK_PersonalizerEndpointFieldId { get; }
+        ID MSSDK_PersonalizerRetryInSecondsFieldId { get; }
         ID MSSDK_QnAFieldId { get; }
         ID MSSDK_QnAEndpointFieldId { get; }
         ID MSSDK_QnARetryInSecondsFieldId { get; }
-        ID MSSDK_RecommendationsFieldId { get; }
-        ID MSSDK_RecommendationsEndpointFieldId { get; }
-        ID MSSDK_RecommendationsRetryInSecondsFieldId { get; }
         ID MSSDK_SpeakerRecognitionFieldId { get; }
         ID MSSDK_SpeakerRecognitionEndpointFieldId { get; }
         ID MSSDK_SpeakerRecognitionRetryInSecondsFieldId { get; }

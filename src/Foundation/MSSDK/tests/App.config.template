@@ -30,12 +30,12 @@
         <add key="MSSDK.Luis" value="${CognitiveService.ApiKey.MSSDK.Luis}" />
         <add key="MSSDK.LuisEndpoint" value="${CognitiveService.ApiKey.MSSDK.Luis.Endpoint}" />
         <add key="MSSDK.LuisRetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.Luis.RetryInSeconds}" />
+        <add key="MSSDK.Personalizer" value="${CognitiveService.ApiKey.MSSDK.Personalizer}" />
+        <add key="MSSDK.PersonalizerEndpoint" value="${CognitiveService.ApiKey.MSSDK.Personalizer.Endpoint}" />
+        <add key="MSSDK.PersonalizerRetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.Personalizer.RetryInSeconds}" />
         <add key="MSSDK.QnA" value="${CognitiveService.ApiKey.MSSDK.QnA}" />
         <add key="MSSDK.QnAEndpoint" value="${CognitiveService.ApiKey.MSSDK.QnA.Endpoint}" />
         <add key="MSSDK.QnARetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.QnA.RetryInSeconds}" />
-        <add key="MSSDK.Recommendations" value="${CognitiveService.ApiKey.MSSDK.Recommendations}" />
-        <add key="MSSDK.RecommendationsEndpoint" value="${CognitiveService.ApiKey.MSSDK.Recommendations.Endpoint}" />
-        <add key="MSSDK.RecommendationsRetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.Recommendations.RetryInSeconds}" />
         <add key="MSSDK.SpeakerRecognition" value="${CognitiveService.ApiKey.MSSDK.SpeakerRecognition}" />
         <add key="MSSDK.SpeakerRecognitionEndpoint" value="${CognitiveService.ApiKey.MSSDK.SpeakerRecognition.Endpoint}" />
         <add key="MSSDK.SpeakerRecognitionRetryInSeconds" value="${CognitiveService.ApiKey.MSSDK.SpeakerRecognition.RetryInSeconds}" />

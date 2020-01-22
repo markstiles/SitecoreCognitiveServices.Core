@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTestFixture.cs" />
+    <Compile Include="Repositories\Decision\PersonalizerTests.cs" />
     <Compile Include="Repositories\Vision\ComputerVisionTests.cs" />
     <Compile Include="Repositories\Vision\FaceRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

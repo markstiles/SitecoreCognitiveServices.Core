@@ -75,12 +75,12 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Keys
                     : defaultValue;
             }
         }
+        public virtual string Personalizer => KeyItem[Settings.MSSDK_PersonalizerFieldId];
+        public virtual string PersonalizerEndpoint => KeyItem[Settings.MSSDK_PersonalizerEndpointFieldId];
+        public virtual int PersonalizerRetryInSeconds => int.Parse(KeyItem[Settings.MSSDK_PersonalizerRetryInSecondsFieldId]);
         public virtual string QnA => KeyItem[Settings.MSSDK_QnAFieldId];
         public virtual string QnAEndpoint => KeyItem[Settings.MSSDK_QnAEndpointFieldId];
         public virtual int QnARetryInSeconds => int.Parse(KeyItem[Settings.MSSDK_QnARetryInSecondsFieldId]);
-        public virtual string Recommendations => KeyItem[Settings.MSSDK_RecommendationsFieldId];
-        public virtual string RecommendationsEndpoint => KeyItem[Settings.MSSDK_RecommendationsEndpointFieldId];
-        public virtual int RecommendationsRetryInSeconds => int.Parse(KeyItem[Settings.MSSDK_RecommendationsRetryInSecondsFieldId]);
         public virtual string SpeakerRecognition => KeyItem[Settings.MSSDK_SpeakerRecognitionFieldId];
         public virtual string SpeakerRecognitionEndpoint => KeyItem[Settings.MSSDK_SpeakerRecognitionEndpointFieldId];
         public virtual int SpeakerRecognitionRetryInSeconds => int.Parse(KeyItem[Settings.MSSDK_SpeakerRecognitionRetryInSecondsFieldId]);
