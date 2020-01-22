@@ -57,6 +57,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
