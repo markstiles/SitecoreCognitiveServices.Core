@@ -204,6 +204,8 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Http
                 request.Headers.Add("authorization", $"Bearer {token}");
             }
 
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
             request.ContentType = contentType;
             request.Accept = contentType;
             request.Method = method;

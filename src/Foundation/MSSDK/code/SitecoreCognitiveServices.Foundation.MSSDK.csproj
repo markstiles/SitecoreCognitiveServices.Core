@@ -65,9 +65,7 @@
     <Compile Include="Decision\Models\Personalizer\DateRange.cs" />
     <Compile Include="Decision\Models\Personalizer\EvaluationRequest.cs" />
     <Compile Include="Decision\Models\Personalizer\Evaluation.cs" />
-    <Compile Include="Decision\Models\Personalizer\Feature.cs" />
-    <Compile Include="Decision\Models\Personalizer\Action.cs" />
-    <Compile Include="Decision\Models\Personalizer\ContextFeature.cs" />
+    <Compile Include="Decision\Models\Personalizer\RankableAction.cs" />
     <Compile Include="Decision\Models\Personalizer\LogsProperties.cs" />
     <Compile Include="Decision\Models\Personalizer\ModelProperties.cs" />
     <Compile Include="Decision\Models\Personalizer\Policy.cs" />

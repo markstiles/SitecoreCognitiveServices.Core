@@ -57,14 +57,14 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Decision
                 null);
         }
 
-        public void RewardTopRankedAction(string eventId)
+        public void Reward(string eventId, float reward)
         {
             PolicyService.ExecuteRetryAndCapture400Errors(
-                   "PersonalizerService.RewardTopRankedAction",
+                   "PersonalizerService.Reward",
                    ApiKeys.PersonalizerRetryInSeconds,
                    () =>
                    {
-                       Repository.RewardTopRankedAction(eventId);
+                       Repository.Reward(eventId, reward);
                        return true;
                    },
                    false);

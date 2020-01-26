@@ -5,9 +5,9 @@ using System.Web;
 
 namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision.Models.Personalizer
 {
-    public class Action
+    public class RankableAction
     {
         public string id { get; set; }
-        public Feature[] features { get; set; }
+        public List<object> features { get; set; }
     }
 }

@@ -7,9 +7,9 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision.Models.Personalize
 {
     public class RankRequest
     {
-        public ContextFeature[] contextFeatures { get; set; }
-        public Action[] actions { get; set; }
-        public string[] excludedActions { get; set; }
+        public List<object> contextFeatures { get; set; }
+        public List<RankableAction> actions { get; set; }
+        public List<string> excludedActions { get; set; }
         public string eventId { get; set; }
         public bool deferActivation { get; set; }
     }

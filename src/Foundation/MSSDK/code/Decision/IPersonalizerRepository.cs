@@ -9,7 +9,7 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision
     {
         RankResponse Rank(RankRequest request);
         ClientConfiguration GetClientConfiguration();
-        void RewardTopRankedAction(string eventId);
+        void Reward(string eventId, float reward);
         void ActivateEvent(string eventId);
         Evaluation SubmitNewEvaluation(EvaluationRequest request);
         Policy DeleteCurrentPolicy();

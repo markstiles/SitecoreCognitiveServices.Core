@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Action = SitecoreCognitiveServices.Foundation.MSSDK.Decision.Models.Personalizer.Action;
+using RankableAction = SitecoreCognitiveServices.Foundation.MSSDK.Decision.Models.Personalizer.RankableAction;
 
 namespace SitecoreCognitiveServices.Foundation.MSSDK.Tests.Repositories.Decision
 {
@@ -32,35 +32,35 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Tests.Repositories.Decision
         {
             var request = new RankRequest
             {
-                contextFeatures = new ContextFeature[]
+                contextFeatures = new List<object>
                 {
-                    new ContextFeature { timeOfDay = "Morning" }
+                    new { time = "Morning" }
                 },
-                actions = new Action[]
+                actions = new List<RankableAction>
                 {
-                    new Action {
+                    new RankableAction {
                         id = "NewsArticle",
-                        features = new Feature[]
+                        features = new List<object>
                         {
-                            new Feature { type = "News" }
+                            new { type = "News" }
                         }
                     },
-                    new Action {
+                    new RankableAction {
                         id = "SportsArticle",
-                        features = new Feature[]
+                        features = new List<object>
                         {
-                            new Feature { type = "Sports" }
+                            new { type = "Sports" }
                         }
                     },
-                    new Action {
+                    new RankableAction {
                         id = "EntertainmentArticle",
-                        features = new Feature[]
+                        features = new List<object>
                         {
-                            new Feature { type = "Entertainment" }
+                            new { type = "Entertainment" }
                         }
                     }
                 },
-                excludedActions = new string[] { "SportsArticle" },
+                excludedActions = new List<string> { "SportsArticle" },
                 eventId = "75269AD0-BFEE-4598-8196-C57383D38E10",
                 deferActivation = false
             };

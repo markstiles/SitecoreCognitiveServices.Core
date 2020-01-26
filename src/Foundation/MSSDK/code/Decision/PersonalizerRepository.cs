@@ -22,14 +22,7 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision
             RepositoryClient = repoClient;
         }
 
-        #region Post
-
-        public RankResponse Rank(RankRequest request)
-        {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}rank", JsonConvert.SerializeObject(request));
-
-            return JsonConvert.DeserializeObject<RankResponse>(response);
-        }
+        #region Azure
 
         public ClientConfiguration GetClientConfiguration()
         {
@@ -37,16 +30,47 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision
 
             return JsonConvert.DeserializeObject<ClientConfiguration>(response);
         }
-
-        public void RewardTopRankedAction(string eventId)
+        
+        public AzureService UpdateServiceConfiguration(AzureService config)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}events/{eventId}/reward", string.Empty);
+            var response = RepositoryClient.SendJsonPut(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}configurations/service", JsonConvert.SerializeObject(config));
+
+            return JsonConvert.DeserializeObject<AzureService>(response);
         }
 
-        public void ActivateEvent(string eventId)
+        public AzureService GetServiceConfiguration()
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}events/{eventId}/activate", string.Empty);
+            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}configurations/service");
+
+            return JsonConvert.DeserializeObject<AzureService>(response);
         }
+
+        public Status GetStatus()
+        {
+            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}status");
+
+            return JsonConvert.DeserializeObject<Status>(response);
+        }
+
+        #endregion
+
+        #region Logs
+
+        public void DeleteLogs()
+        {
+            var response = RepositoryClient.SendJsonDelete(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}logs");
+        }
+
+        public LogsProperties GetLogsProperties()
+        {
+            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}logs/properties");
+
+            return JsonConvert.DeserializeObject<LogsProperties>(response);
+        }
+
+        #endregion
+
+        #region Evaluations
 
         public Evaluation SubmitNewEvaluation(EvaluationRequest request)
         {
@@ -55,35 +79,31 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision
             return JsonConvert.DeserializeObject<Evaluation>(response);
         }
 
-        #endregion Post
-
-        #region Delete
-
-        public Policy DeleteCurrentPolicy()
+        public List<Evaluation> GetEvaluations()
         {
-            var response = RepositoryClient.SendJsonDelete(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}configurations/policy");
+            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}evaluations");
 
-            return JsonConvert.DeserializeObject<Policy>(response);
+            return JsonConvert.DeserializeObject<List<Evaluation>>(response);
+        }
+
+        public Evaluation GetEvaluation(string evaluationId)
+        {
+            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}evaluations/{evaluationId}");
+
+            return JsonConvert.DeserializeObject<Evaluation>(response);
         }
 
         public void DeleteEvaluation(string evaluationId)
         {
             var response = RepositoryClient.SendJsonDelete(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}evaluations/{evaluationId}");
         }
-
-        public void DeleteLogs()
+        
+        public Policy GetPolicyConfiguration()
         {
-            var response = RepositoryClient.SendJsonDelete(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}logs");
+            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}configurations/policy");
+
+            return JsonConvert.DeserializeObject<Policy>(response);
         }
-
-        public void DeleteModel()
-        {
-            var response = RepositoryClient.SendJsonDelete(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}model");
-        }
-
-        #endregion Delete
-
-        #region Update
 
         public Policy UpdatePolicyConfiguration(Policy policy)
         {
@@ -91,17 +111,45 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision
 
             return JsonConvert.DeserializeObject<Policy>(response);
         }
-
-        public AzureService UpdateServiceConfiguration(AzureService config)
+        
+        public Policy DeleteCurrentPolicy()
         {
-            var response = RepositoryClient.SendJsonPut(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}configurations/service", JsonConvert.SerializeObject(config));
+            var response = RepositoryClient.SendJsonDelete(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}configurations/policy");
 
-            return JsonConvert.DeserializeObject<AzureService>(response);
+            return JsonConvert.DeserializeObject<Policy>(response);
+        }
+        
+        #endregion
+
+        #region Rank
+
+        public RankResponse Rank(RankRequest request)
+        {
+            var response = RepositoryClient.SendJsonPost(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}rank", JsonConvert.SerializeObject(request));
+
+            return JsonConvert.DeserializeObject<RankResponse>(response);
         }
 
-        #endregion Update
+        public void Reward(string eventId, float reward)
+        {
+            var value = JsonConvert.SerializeObject(new { value = reward });
 
-        #region Get
+            var response = RepositoryClient.SendJsonPost(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}events/{eventId}/reward", value);
+        }
+
+        public void ActivateEvent(string eventId)
+        {
+            var response = RepositoryClient.SendJsonPost(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}events/{eventId}/activate", string.Empty);
+        }
+
+        #endregion
+
+        #region Model
+
+        public void DeleteModel()
+        {
+            var response = RepositoryClient.SendJsonDelete(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}model");
+        }
 
         public byte[] GetCurrentModel()
         {
@@ -117,48 +165,6 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision
             return JsonConvert.DeserializeObject<ModelProperties>(response);
         }
 
-        public Evaluation GetEvaluation(string evaluationId)
-        {
-            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}evaluations/{evaluationId}");
-
-            return JsonConvert.DeserializeObject<Evaluation>(response);
-        }
-
-        public Policy GetPolicyConfiguration()
-        {
-            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}configurations/policy");
-
-            return JsonConvert.DeserializeObject<Policy>(response);
-        }
-
-        public AzureService GetServiceConfiguration()
-        {
-            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}configurations/service");
-
-            return JsonConvert.DeserializeObject<AzureService>(response);
-        }
-
-        public LogsProperties GetLogsProperties()
-        {
-            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}logs/properties");
-
-            return JsonConvert.DeserializeObject<LogsProperties>(response);
-        }
-
-        public List<Evaluation> GetEvaluations()
-        {
-            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}evaluations");
-
-            return JsonConvert.DeserializeObject<List<Evaluation>>(response);
-        }
-        
-        public Status GetStatus()
-        {
-            var response = RepositoryClient.SendGet(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}status");
-
-            return JsonConvert.DeserializeObject<Status>(response);
-        }
-
-        #endregion Get
+        #endregion Delete
     }
 }
