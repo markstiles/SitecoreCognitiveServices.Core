@@ -8,6 +8,7 @@ using System.Text;
 using SitecoreCognitiveServices.Foundation.IBMSDK.Http;
 using Newtonsoft.Json;
 using SitecoreCognitiveServices.Foundation.IBMSDK.NaturalLanguageClassifier.Models;
+using System.Web;
 
 namespace SitecoreCognitiveServices.Foundation.IBMSDK.NaturalLanguageClassifier
 {
@@ -137,8 +138,7 @@ namespace SitecoreCognitiveServices.Foundation.IBMSDK.NaturalLanguageClassifier
         {
             var response = RepositoryClient
                 .WithAuthentication(ApiKeys.NaturalLanguageClassifierUsername, ApiKeys.NaturalLanguageClassifierPassword)
-                .PostAsync($"{ApiKeys.NaturalLanguageClassifierEndpoint}{classifier_id}{classifyUrl}")
-                .WithBody(new TextEntity { text = $"\"{text}\"" })
+                .GetAsync($"{ApiKeys.NaturalLanguageClassifierEndpoint}{classifier_id}{classifyUrl}?text={HttpUtility.UrlEncode(text)}")
                 .As<ClassifyResponse>()
                 .Result;
             
