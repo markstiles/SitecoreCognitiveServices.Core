@@ -139,7 +139,7 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision
 
         public void ActivateEvent(string eventId)
         {
-            var response = RepositoryClient.SendJsonPost(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}events/{eventId}/activate", string.Empty);
+            var response = RepositoryClient.SendJsonPost(ApiKeys.Personalizer, $"{ApiKeys.PersonalizerEndpoint}events/{eventId}/activate", null);
         }
 
         #endregion
