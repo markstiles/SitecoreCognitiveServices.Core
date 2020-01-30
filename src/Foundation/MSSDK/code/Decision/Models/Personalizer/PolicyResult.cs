@@ -9,7 +9,7 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision.Models.Personalize
     {
         public string name { get; set; }
         public string arguments { get; set; }
-        public Summary[] summary { get; set; }
+        public List<Summary> summary { get; set; }
         public Summary totalSummary { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision.Models.Personalize
     public class Ranking
     {
         public string id { get; set; }
-        public float probability { get; set; }
+        public double probability { get; set; }
     }
 }

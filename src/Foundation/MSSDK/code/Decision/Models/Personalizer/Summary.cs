@@ -8,12 +8,12 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision.Models.Personalize
     public class Summary
     {
         public DateTime timeStamp { get; set; }
-        public float ipsEstimatorNumerator { get; set; }
-        public int ipsEstimatorDenominator { get; set; }
-        public float snipsEstimatorDenominator { get; set; }
-        public string aggregateTimeWindow { get; set; }
-        public int nonZeroProbability { get; set; }
-        public float confidenceInterval { get; set; }
-        public float sumOfSquares { get; set; }
+        public double ipsEstimatorNumerator { get; set; }
+        public double ipsEstimatorDenominator { get; set; }
+        public double snipsEstimatorDenominator { get; set; }
+        public TimeSpan aggregateTimeWindow { get; set; }
+        public double nonZeroProbability { get; set; }
+        public double confidenceInterval { get; set; }
+        public double sumOfSquares { get; set; }
     }
 }

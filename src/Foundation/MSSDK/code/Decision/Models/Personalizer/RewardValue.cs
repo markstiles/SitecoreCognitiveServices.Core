@@ -7,6 +7,6 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision.Models.Personalize
 {
     public class RewardValue
     {
-        public int value { get; set; }
+        public double value { get; set; }
     }
 }

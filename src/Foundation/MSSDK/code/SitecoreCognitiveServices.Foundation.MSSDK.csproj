@@ -61,20 +61,20 @@
   <ItemGroup>
     <Compile Include="CSV\CSVParser.cs" />
     <Compile Include="CSV\ICSVParser.cs" />
+    <Compile Include="Decision\Models\Personalizer\AzureService.cs" />
     <Compile Include="Decision\Models\Personalizer\ClientConfiguration.cs" />
     <Compile Include="Decision\Models\Personalizer\DateRange.cs" />
-    <Compile Include="Decision\Models\Personalizer\EvaluationRequest.cs" />
     <Compile Include="Decision\Models\Personalizer\Evaluation.cs" />
-    <Compile Include="Decision\Models\Personalizer\RankableAction.cs" />
+    <Compile Include="Decision\Models\Personalizer\EvaluationRequest.cs" />
     <Compile Include="Decision\Models\Personalizer\LogsProperties.cs" />
     <Compile Include="Decision\Models\Personalizer\ModelProperties.cs" />
     <Compile Include="Decision\Models\Personalizer\Policy.cs" />
     <Compile Include="Decision\Models\Personalizer\PolicyResult.cs" />
+    <Compile Include="Decision\Models\Personalizer\RankableAction.cs" />
     <Compile Include="Decision\Models\Personalizer\Ranking.cs" />
     <Compile Include="Decision\Models\Personalizer\RankRequest.cs" />
     <Compile Include="Decision\Models\Personalizer\RankResponse.cs" />
     <Compile Include="Decision\Models\Personalizer\RewardValue.cs" />
-    <Compile Include="Decision\Models\Personalizer\AzureService.cs" />
     <Compile Include="Decision\Models\Personalizer\Status.cs" />
     <Compile Include="Decision\Models\Personalizer\Summary.cs" />
     <Compile Include="Enums\Academic.cs" />

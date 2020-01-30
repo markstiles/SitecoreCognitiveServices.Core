@@ -534,6 +534,9 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Http
 
         public virtual byte[] GetByteArray(Stream stream)
         {
+            if (stream == null)
+                return new byte[0];
+
             if (stream is MemoryStream)
                 return ((MemoryStream)stream).ToArray();
 
@@ -546,6 +549,9 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Http
 
         public virtual byte[] GetByteArray(string value)
         {
+            if (string.IsNullOrWhiteSpace(value))
+                return new byte[0];
+
             return Encoding.ASCII.GetBytes(value);
         }
     }

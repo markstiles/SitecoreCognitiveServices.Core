@@ -7,7 +7,7 @@ namespace SitecoreCognitiveServices.Foundation.MSSDK.Decision.Models.Personalize
 {
     public class RankResponse
     {
-        public Ranking[] ranking { get; set; }
+        public List<Ranking> ranking { get; set; }
         public string eventId { get; set; }
         public string rewardActionId { get; set; }
     }
