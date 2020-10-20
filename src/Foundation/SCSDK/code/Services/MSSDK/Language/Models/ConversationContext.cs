@@ -45,7 +45,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Mod
             IConversation conversation = null;
 
             var isConfident = Result.TopScoringIntent.Score > ApiKeys.LuisIntentConfidenceThreshold;
-            var hasValidIntent = intent != null && isConfident;
+            var hasValidIntent = intent != null && isConfident && intent.KeyName != "none";
 
             if (ConversationHistory.Conversations.Any())
             {

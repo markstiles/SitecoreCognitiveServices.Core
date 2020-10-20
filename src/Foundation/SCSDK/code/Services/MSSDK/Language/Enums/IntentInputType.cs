@@ -14,6 +14,7 @@ namespace SitecoreCognitiveServices.Foundation.SCSDK.Services.MSSDK.Language.Enu
         [Display(Name = "Password")] Password,
         [Display(Name = "ItemSearch")] ItemSearch,
         [Display(Name = "ListSearch")] ListSearch,
+        [Display(Name = "ExternalLinks")] ExternalLinks,
         [Display(Name = "None")] None
     }
 }
