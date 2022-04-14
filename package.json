@@ -4,7 +4,7 @@
   "description": "Sitecore Cognitive Services Node Dependencies",
   "main": "gulpfile.js",
   "dependencies": {
-    "async": "^3.1.0",
+    "async": "^3.2.2",
     "glob": "^7.1.4",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
